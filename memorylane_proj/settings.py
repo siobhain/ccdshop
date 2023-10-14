@@ -23,7 +23,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 DEBUG = True
 
 # ALLOWED_HOSTS = ['8000-siobhain-ccdshop-bpkmxu5gw3e.ws-eu105.gitpod.io', 'memorylane-jewellery-63c74e421293.herokuapp.com']
-ALLOWED_HOSTS = ['memorylane-jewellery-63c74e421293.herokuapp.com']
+ALLOWED_HOSTS = ['memorylane-jewellery-63c74e421293.herokuapp.com', '8000-siobhain-ccdshop-bpkmxu5gw3e.ws-eu105.gitpod.io' ]
 
 # Application definition
 
@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'home',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -154,3 +155,22 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# In production AWS will host static & media files
+if 'USE_AWS' in os.environ:
+    # Bucket Config
+    AWS_STORAGE_BUCKET_NAME = 'pp5bucket4herokuapp'
+    AWS_S3_REGION_NAME = 'eu-west-1'
+    AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+    AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+
+    # Static and media files
+    STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+    STATICFILES_LOCATION = 'static'
+    DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+    MEDIAFILES_LOCATION = 'media'
+
+    # Override static and media URLs in production
+    STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
+    MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
