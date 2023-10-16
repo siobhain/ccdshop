@@ -1,5 +1,6 @@
 [
     {
+      "pk": 1,
       "model": "products.category",
       "fields": {
         "name": "earrings",
@@ -7,6 +8,7 @@
       }
     },
     {
+      "pk": 2,
       "model": "products.category",
       "fields": {
         "name": "sets",
@@ -14,6 +16,7 @@
       }
     },
     {
+      "pk": 3,
       "model": "products.category",
       "fields": {
         "name": "clearance",
@@ -21,6 +24,7 @@
       }
     },
     {
+      "pk": 4,
       "model": "products.category",
       "fields": {
         "name": "deals",
@@ -28,6 +32,7 @@
       }
     },
     {
+      "pk": 5,
       "model": "products.category",
       "fields": {
         "name": "necklaces",
@@ -35,6 +40,7 @@
       }
     },
     {
+      "pk": 6,
       "model": "products.category",
       "fields": {
         "name": "bracelets",
@@ -42,6 +48,7 @@
       }
     },
     {
+      "pk": 7,
       "model": "products.category",
       "fields": {
         "name": "anklet",
@@ -49,6 +56,7 @@
       }
     },
     {
+      "pk": 8,
       "model": "products.category",
       "fields": {
         "name": "new_arrivals",
@@ -56,6 +64,7 @@
       }
     },
     {
+      "pk": 9,
       "model": "products.category",
       "fields": {
         "name": "ring",

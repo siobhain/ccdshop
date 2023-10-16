@@ -1,7 +1,8 @@
-![ logo](http://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# ![MLJ logo](static/favicon-32x32.png) Memory Lane Jewellery
 
+Memory Lane Jewellery is an online jewellery shop that specializes in crafting and curating pieces of sentimental &nostalgic value. My Jewellery is designed to help you create precious memories for you and your loved ones to cherise for a long time. I can offer custom engravings on my pendants and , or designs inspired by personal history. I believe in a sense of emotional connection and the idea that each piece of jewellery is a keepsake with a story behind it, making it a great choice for meaningful gift.
 
-Memory Lane Jewelry
+I can offer custom engravings on my pendants and/or designs inspired by personal history. 
 
 This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
 
