@@ -5,7 +5,6 @@ from .models import Category, Collection, Product
 class CategoryAdmin(admin.ModelAdmin):
     list_display = (
         'friendly_name',
-        'name',
         'engravable',
         'sizeable',
     )
@@ -13,7 +12,6 @@ class CategoryAdmin(admin.ModelAdmin):
 class CollectionAdmin(admin.ModelAdmin):
     list_display = (
         'friendly_name',
-        'name',
         'description',
     )
 
@@ -21,15 +19,9 @@ class CollectionAdmin(admin.ModelAdmin):
 class ProductAdmin(admin.ModelAdmin):
     list_display = (
         'name',
-        'description',
         'category',
         'collection',
-        'sku',
         'price',
-        'rating',
-        'engrave_text',
-        'engrave_style',
-        'engrave_cost',
         'image_url',
         'image'
     )

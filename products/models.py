@@ -44,7 +44,7 @@ class Product(models.Model):
     engrave_cost = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True)
     # Want to remove image_url as think not necessary if AWS enabled
     image_url = models.URLField(max_length=1024, null=True, blank=True)
-    image = models.ImageField(null=True, blank=True)
+    image = models.ImageField(default='default_product_image.jpg')
     
     SIZE_CHOICES = []
     RING_SIZES = [
