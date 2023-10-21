@@ -81,6 +81,7 @@ body {
   }
 }
 
+
 /* fixed top navbar only on medium and up */
 @media (min-width: 992px) {
     .fixed-top-desktop-only {
@@ -94,4 +95,16 @@ body {
     .header-container {
         padding-top: 164px;
     }
+}
+
+/* Need more padding at top when navbar is collapsed on mobile */
+@media (max-width: 991px) {
+    .header-container {
+        padding-top: 116px;
+    }
+
+    body {
+        height: calc(100vh - 116px);
+    }
+
 }
