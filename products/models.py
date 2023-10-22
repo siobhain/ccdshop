@@ -2,6 +2,7 @@ from django.db import models
 
 # Create your models here.
 
+
 class Category(models.Model):
     name = models.CharField(max_length=20)
     friendly_name = models.CharField(max_length=25, null=True, blank=True)
@@ -45,7 +46,7 @@ class Product(models.Model):
     # Want to remove image_url as think not necessary if AWS enabled
     image_url = models.URLField(max_length=1024, null=True, blank=True)
     image = models.ImageField(default='default_product_image.jpg')
-    
+
     SIZE_CHOICES = []
     RING_SIZES = [
         ('D', 'D'),

@@ -2,25 +2,25 @@
     <ul class="navbar-nav w-auto mx-auto">
         <li class="nav-item dropdown">
             <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="all-products-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                All Products
+                MainNav Shop
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="all-products-link">
-                <a href="" class="dropdown-item">MainNav By Price</a>
-                <a href="" class="dropdown-item ">By Collection</a>
-                <a href="" class="dropdown-item ">By Category</a>
+                <a href="/products/?sort=price&direction=asc" class="dropdown-item">By Price</a>
+                <a href="/products/?sort=rating&direction=desc" class="dropdown-item ">By Rating</a>
+                <a href="/products/?sort=category&direction=asc" class="dropdown-item ">By Category</a>
                 <a href="{% url 'products' %}" class="dropdown-item">All Jewellery</a>
             </div>
         </li>
 
         <li class="nav-item dropdown">
             <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="clothing-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Jewellery
+                For Her
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="clothing-link">
-                <a href="" class="dropdown-item">Earrings</a>
-                <a href="" class="dropdown-item">Pendants</a>
-                <a href="" class="dropdown-item">Braclets</a>
-                <a href="" class="dropdown-item">All Jewellery</a>
+                <a href="{% url 'products' %}?category=earrings" class="dropdown-item">Earrings</a>
+                <a href="{% url 'products' %}?category=pendants" class="dropdown-item">Pendants</a>
+                <a href="{% url 'products' %}?category=bracelets" class="dropdown-item">Bracelets</a>
+                <a href="{% url 'products' %}?category=rings" class="dropdown-item">Rings</a>
             </div>
         </li>
 
@@ -29,21 +29,22 @@
                 Wedding Couples
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="homeware-link">
-                <a href="" class="dropdown-item">For Her</a>
-                <a href="" class="dropdown-item">For Him</a>
-                <a href="" class="dropdown-item">All Bands</a>
+                <a href="" class="dropdown-item">Enganement Rings</a>
+                <a href="" class="dropdown-item">Wedding Bands</a>
+                <a href="" class="dropdown-item">Wedding Rings For Him</a>
+                <a href="" class="dropdown-item">Wedding Rings For her</a>
             </div>
         </li>
 
         <li class="nav-item dropdown">
             <a class="logo-font font-weight-bold nav-link text-black" href="#" id="specials-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Special Offers End Main-Nav
+                Special Offers EndMainNav
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="specials-link">
                 <a href="" class="dropdown-item">New Arrivals</a>
                 <a href="" class="dropdown-item">Deals</a>
                 <a href="" class="dropdown-item">Clearance</a>
-                <a href="" class="dropdown-item">All Specials</a>
+                <a href="" class="dropdown-item">All Special Offers</a>
             </div>
         </li>
     </ul>
