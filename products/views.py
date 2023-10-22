@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.db.models import Q
+from django.db.models import Q, F
 from django.db.models.functions import Lower
 
 from .models import Product, Collection, Category
@@ -30,9 +30,10 @@ def all_products(request):
                 sortkey = 'category__name'
             if 'direction' in request.GET:
                 direction = request.GET['direction']
-                if direction == 'desc':
-                    sortkey = f'-{sortkey}'
-            products = products.order_by(sortkey)
+            if direction == 'desc':
+                products = products.order_by(F(sortkey).desc(nulls_last=True))
+            else:
+                products = products.order_by(sortkey)
 
         if 'category' in request.GET:
             categories = request.GET['category'].split(',')

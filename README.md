@@ -8,6 +8,9 @@ This is the Code Institute student template for Gitpod. We have preinstalled all
 
 You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **September 1, 2021**
 
+### !(https://docs.djangoproject.com/en/3.2/ref/models/expressions/#using-f-to-sort-null-values) F Object
+Used this along with nulls_last on descending sort when Ratings field has null
+
 ## Gitpod Reminders
 
 To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
