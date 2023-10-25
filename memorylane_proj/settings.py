@@ -21,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 # ALLOWED_HOSTS = ['8000-siobhain-ccdshop-bpkmxu5gw3e.ws-eu105.gitpod.io', 'memorylane-jewellery-63c74e421293.herokuapp.com']
 ALLOWED_HOSTS = ['memorylane-jewellery-63c74e421293.herokuapp.com', '8000-siobhain-ccdshop-bpkmxu5gw3e.ws-eu105.gitpod.io']
