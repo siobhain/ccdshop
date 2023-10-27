@@ -22,7 +22,7 @@ class ProductAdmin(admin.ModelAdmin):
         'category',
         'collection',
         'price',
-        'image_url',
+        'sizeable',
         'image'
     )
     ordering = ('name',)
