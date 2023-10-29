@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load bag_tools %}
 
 {% block page_header %}
     <div class="container header-container">
@@ -23,10 +24,10 @@
         <div class="row">
             <div class="col">
                 {% if bag_items %}
-                    {{ bag_items }}
+                    BAG_ITEMS {{ bag_items }}
                     <br>
                     <br>
-                    {{ request.session.bag }}
+                    SESSION_BAG {{ request.session.bag }}
                     <div class="table-responsive rounded">
                         <table class="table table-sm table-borderless">
                             <thead class="text-black">
@@ -49,7 +50,8 @@
                                         <p class="my-0"><strong>Size: </strong>{% if item.product.sizeable %}{{ item.size|upper }}{% else %}N/A{% endif %}</p>
                                     </td>
                                     <td class="py-3">
-                                        <p class="my-0">€{{ item.product.price }}</p>
+                                        <p class="my-0">€{{ item.product.price }} QTY {{item.quantity}}</p>
+                                        <p><strong>Subtotal: </strong>€{% calc_subtotal item.product.price item.quantity item.size %}</p>
                                     </td>
                                     <td class="py-3 w-25">
                                         <form class="form update-form" method="POST" action="{% url 'adjust_bag' item.item_id %}">
@@ -65,7 +67,7 @@
                                                         </button>
                                                     </div>
                                                     <input class="form-control form-control-sm qty_input" type="number"
-                                                        name="quantity" value="{{ item.quantity }}" min="1" max="99"
+                                                        name="quantity" value="{{ item.quantity }}" min="1" max="5"
                                                         data-item_id="{{ item.item_id }}"
                                                         id="id_qty_{{ item.item_id }}">
                                                     <div class="input-group-append">
@@ -86,7 +88,8 @@
                                         <a class="remove-item text-danger float-right" id="remove_{{ item.item_id }}" data-product-size="{{ item.size }}"><small>Remove</small></a>
                                     </td>
                                     <td class="py-3">
-                                        <p class="my-0">€{{ item.product.price }}</p>
+                                        ITEM {{ item }}
+                                        <p class="my-0">€{% calc_subtotal item.product.price item.quantity item.size %}</p>
                                     </td>
                                 </tr>
                             {% endfor %}
