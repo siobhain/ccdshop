@@ -200,3 +200,8 @@ if 'USE_AWS' in os.environ:
 # Use by bag/contexts.py for calculating delivery charge
 FREE_DELIVERY_THRESHOLD = 100
 STANDARD_DELIVERY_PERCENTAGE = 10
+
+# Stripe settings
+STRIPE_CURRENCY = 'eur'
+STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', '')
+STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
