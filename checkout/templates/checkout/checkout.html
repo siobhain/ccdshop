@@ -9,7 +9,7 @@
 {% block page_header %}
     <div class="container header-container">
         <div class="row">
-            <div class="col"></div>
+            <div class="col"><h2>Session Bag</h2> {{ request.session.bag }} <br><h3>BAGITEMS</h3> {{bag_items}}</div>
         </div>
     </div>
 {% endblock %}
