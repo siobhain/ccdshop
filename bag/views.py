@@ -5,6 +5,7 @@ from products.models import Product
 
 # Create your views here.
 
+
 def view_bag(request):
     """ A view that renders the bag contents page """
 
@@ -21,7 +22,7 @@ def add_to_bag(request, item_id):
     if 'product_size' in request.POST:
         size = request.POST['product_size']
     bag = request.session.get('bag', {})
-    
+
     if size:
         if item_id in list(bag.keys()):
             if size in bag[item_id]['items_by_size'].keys():
@@ -54,9 +55,10 @@ def add_to_bag(request, item_id):
     request.session['bag'] = bag
     return redirect(redirect_url)
 
+
 def adjust_bag(request, item_id):
     """Adjust the quantity of the specified product to the specified amount"""
-   
+
     product = get_object_or_404(Product, pk=item_id)
     quantity = int(request.POST.get('quantity'))
     size = None
@@ -72,7 +74,7 @@ def adjust_bag(request, item_id):
             del bag[item_id]['items_by_size'][size]
             if not bag[item_id]['items_by_size']:
                 bag.pop(item_id)
-            messages.success(request, f'Removed size {size.upper()} {product.name} from your bag')
+            messages.success(request, f'Removed {product.name}, size {size.upper()} from your bag')
     else:
         if quantity > 0:
             bag[item_id] = quantity
@@ -94,12 +96,11 @@ def remove_from_bag(request, item_id):
         if 'product_size' in request.POST:
             size = request.POST['product_size']
         bag = request.session.get('bag', {})
-
         if size:
             del bag[item_id]['items_by_size'][size]
             if not bag[item_id]['items_by_size']:
                 bag.pop(item_id)
-            messages.success(request, f'Removed size {size.upper()} {product.name} from your bag')
+            messages.success(request, f'Removed {product.name}, size {size.upper()} from your bag')
         else:
             bag.pop(item_id)
             messages.success(request, f'Removed {product.name} from your bag')
