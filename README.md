@@ -11,6 +11,15 @@ You can safely delete this README.md file, or change it for your own project. Pl
 ### !(https://docs.djangoproject.com/en/3.2/ref/models/expressions/#using-f-to-sort-null-values) F Object
 Used this along with nulls_last on descending sort when Ratings field has null
 
+#### Checkout
+##### Payment Redundancy
+
+There is redundancy build into the Checkout app during Stripe payment processing in cases where the user might close the browser or lose power/connectivity or do something on the client/frontend side that breaks connection with the server during payment processing causing the order not to be submitted to the database even though the payment has been made. This is for edge cases only and is achieved by listening for particular stripe webhooks (wh's) which operate like signals in the background and are unaffected by whats going on front end. It is the same implementation as **BoutiqueAdo**. The Stripe account is configured to send wh's to an endpoint such as `https://memorylane-jewellery-63c74e421293.herokuapp.com/checkout/wh/` & 
+
+once a wh is verified as 
+
+ When a `payment_intent.succeeded` webhook is send by Stripe it signifies that the payment has been made, 
+
 ## Gitpod Reminders
 
 To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
