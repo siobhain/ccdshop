@@ -10,6 +10,15 @@ body {
     font-family: 'Roboto', 'Lucida Grande', sans-serif;
 }
 
+/* Remove the small arrows in the number box on each line of shopping bag */
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
 /* from Bulma */
 .icon {
     align-items: center;

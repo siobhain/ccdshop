@@ -5,7 +5,7 @@
 {% block page_header %}
     <div class="container header-container">
         <div class="row">
-            <div class="col"></div>
+            <div class="col"><h3> Bag_items{{ bag_items }}</h3></div>
         </div>
     </div>
 {% endblock %}
@@ -24,10 +24,8 @@
         <div class="row">
             <div class="col">
                 {% if bag_items %}
-                    BAG_ITEMS {{ bag_items }}
                     <br>
                     <br>
-                    SESSION_BAG {{ request.session.bag }}
                     <div class="table-responsive rounded">
                         <table class="table table-sm table-borderless">
                             <thead class="text-black">
@@ -47,10 +45,17 @@
                                     </td>
                                     <td class="py-3">
                                         <p class="my-0"><strong>{{ item.product.name }}</strong></p>
-                                        <p class="my-0"><strong>Size: </strong>{% if item.product.sizeable %}{{ item.size|upper }}{% else %}N/A{% endif %}</p>
+                                        <p class="my-0"><strong>Size: </strong>
+                                            {% if item.product.sizeable %}
+                                                {{ item.size|upper }}
+                                                {% get_quantity item.quantity, item.size}
+                                            {% else %}
+                                                N/A
+                                            
+                                            {% endif %}</p>
                                     </td>
                                     <td class="py-3">
-                                        <p class="my-0">€{{ item.product.price }} QTY {{item.quantity}}</p>
+                                        <p class="my-0">€{{ item.product.price }} Item is {{item}}</p>
                                         <p><strong>Subtotal: </strong>€{% calc_subtotal item.product.price item.quantity item.size %}</p>
                                     </td>
                                     <td class="py-3 w-25">
@@ -67,12 +72,12 @@
                                                         </button>
                                                     </div>
                                                     <input class="form-control form-control-sm qty_input" type="number"
-                                                        name="quantity" value="{{ item.quantity }}" min="1" max="5"
-                                                        data-item_id="{{ item.item_id }}"
-                                                        id="id_qty_{{ item.item_id }}">
+                                                        name="quantity" min="1" max="5" id="id_qty_{{ item.item_id }}"
+                                                        value= "{% retrieve_quantity item.quantity item.size %}">
+                                                        
                                                     <div class="input-group-append">
                                                         <button class="increment-qty btn btn-sm btn-black rounded-0"
-                                                            data-item_id="{{ item.item_id }}" id="increment-qty_{{ item.item_id }}">
+                                                            data-item_id= "{{ item.item_id }}" id="increment-qty_{{ item.item_id }}">
                                                             <span>
                                                                 <i class="fas fa-plus fa-sm"></i>
                                                             </span>
@@ -88,7 +93,6 @@
                                         <a class="remove-item text-danger float-right" id="remove_{{ item.item_id }}" data-product_size="{{ item.size }}"><small>Remove</small></a>
                                     </td>
                                     <td class="py-3">
-                                        ITEM {{ item }}
                                         <p class="my-0">€{% calc_subtotal item.product.price item.quantity item.size %}</p>
                                     </td>
                                 </tr>
