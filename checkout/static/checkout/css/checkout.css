@@ -36,6 +36,16 @@
     border: 1px solid #000;
 }
 
+select,
+select option {
+    color: #000000;
+}
+
+select:invalid,
+select option[value=""] {
+    color: #aab7c4 !important;
+}
+
 #loading-overlay {
 	display: none;
 	position: fixed;
@@ -53,4 +63,13 @@
     justify-content: center;
     margin: 0;
     height: 100%;
+}
+
+.bg-light {
+    background-color: #dee2e6!important;
+}
+
+.order-confirmation-wrapper {
+    border: 7px solid #dee2e6!important;
+    padding-top: 0!important;
 }

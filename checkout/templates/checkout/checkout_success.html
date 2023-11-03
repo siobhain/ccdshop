@@ -8,7 +8,7 @@
 {% block page_header %}
     <div class="container header-container">
         <div class="row">
-            <div class="col"><h2>LineItems</h2>{{order.lineitems.all}}</div>
+            <div class="col"></div>
         </div>
     </div>
 {% endblock %}
@@ -17,9 +17,20 @@
     <div class="overlay"></div>
     <div class="container">
         <div class="row">
-            <div class="col">
+            <div class="col-md-6">
                 <hr>
                 <h2 class="logo-font mb-4">Thank You</h2>
+            </div>
+            <div class="col-md-6">
+                <hr>
+                <a href="{% url 'products' %}" class="btn btn-outline-black rounded-0 btn-lg">
+                    <span class="icon">
+                        <i class="fas fa-chevron-left"></i>
+                    </span>
+                    <span class="text-uppercase">More Shopping</span>
+                </a>
+            </div>
+            <div class="col">
                 <hr>
                 <p class="text-black">Your order information is below. A confirmation email will be sent to <strong>{{ order.email }}</strong>.</p>
             </div>
@@ -27,8 +38,8 @@
 
         <div class="row">
             <div class="col-12 col-lg-7">
-                <div class="order-confirmation-wrapper p-2 border">
-                    <div class="row">
+                <div class="order-confirmation-wrapper p-2">
+                    <div class="row bg-light">
                         <div class="col">
                             <small class="text-muted">Order Info:</small>
                         </div>
@@ -52,7 +63,7 @@
                         </div>
                     </div>
 
-                    <div class="row">
+                    <div class="row bg-light">
                         <div class="col">
                             <small class="text-muted">Order Details:</small>
                         </div>
@@ -66,12 +77,12 @@
                             </p>
                         </div>
                         <div class="col-12 col-md-8 text-md-right">
-                            <p class="small mb-0">{{ item.quantity }} @ ${{ item.product.price }} each</p>
+                            <p class="small mb-0">{{ item.quantity }} @ €{{ item.product.price|floatformat:0 }} each</p>
                         </div>
                     </div>
                     {% endfor %}
 
-                    <div class="row">
+                    <div class="row bg-light">
                         <div class="col">
                             <small class="text-muted">Delivering To:</small>
                         </div>
@@ -155,7 +166,7 @@
                         </div>
                     </div>
 
-                    <div class="row">
+                    <div class="row bg-light">
                         <div class="col">
                             <small class="text-muted">Billing Info:</small>
                         </div>
@@ -166,7 +177,7 @@
                             <p class="mb-0 text-black font-weight-bold">Order Total</p>
                         </div>
                         <div class="col-12 col-md-8 text-md-right">
-                            <p class="mb-0">{{ order.order_total }}</p>
+                            <p class="mb-0">€{{ order.order_total|floatformat:0 }}</p>
                         </div>
                     </div>
 
@@ -175,7 +186,7 @@
                             <p class="mb-0 text-black font-weight-bold">Delivery</p>
                         </div>
                         <div class="col-12 col-md-8 text-md-right">
-                            <p class="mb-0">{{ order.delivery_cost }}</p>
+                            <p class="mb-0">€{{ order.delivery_cost|floatformat:0 }}</p>
                         </div>
                     </div>
 
@@ -184,7 +195,7 @@
                             <p class="mb-0 text-black font-weight-bold">Grand Total</p>
                         </div>
                         <div class="col-12 col-md-8 text-md-right">
-                            <p class="mb-0">{{ order.grand_total }}</p>
+                            <p class="mb-0">€{{ order.grand_total|floatformat:0 }}</p>
                         </div>
                     </div>
                 </div>
