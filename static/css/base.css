@@ -216,6 +216,7 @@ input[name='q']::placeholder {
 }
 
 /* Need more padding at top when navbar is collapsed on mobile */
+
 @media (max-width: 991px) {
     .header-container {
         padding-top: 116px;
@@ -226,3 +227,12 @@ input[name='q']::placeholder {
     }
 
 }
+
+/* Don't display banner on < 480 screens */
+
+@media (max-width: 480px) {
+    #delivery-banner {
+      display: none;
+    }
+}
+  

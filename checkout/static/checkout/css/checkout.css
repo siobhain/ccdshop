@@ -41,6 +41,7 @@ select option {
     color: #000000;
 }
 
+# <select> elements that are not valid  & empty dropdown <option>'s'
 select:invalid,
 select option[value=""] {
     color: #aab7c4 !important;

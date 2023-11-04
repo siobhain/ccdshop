@@ -21,7 +21,9 @@ The currency is set to Euro in settings.py as all goods are for sale from Irelan
 #### Product Pricing
 It is a strategic business decision to opt for whole number pricing in order to maintain the feeling of exclusivity and quality in the goods.  The discerening customer would not fall for the charm pricing of say €49.99.
 
+#### Stripe Secrets
 
+Use `<input type="hidden"..>` to pass the `client_secret` to stripe server, With the hidden attribute set the user cannot view or interact with the value being passed
 
 ##### Redundancy for payment system on chekcout app
 
@@ -30,6 +32,10 @@ There is redundancy build into the Checkout app during Stripe payment processing
 
  When a `payment_intent.succeeded` webhook is send by Stripe it signifies that the payment has been made, 
 
+
+#### Responsive
+
+The delivery banner (`#delivery-banner`) not displayed on screens < 480 px 
 ## Gitpod Reminders
 
 To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
