@@ -38,13 +38,16 @@ def bag_contents(request):
 # Use math.ceil to round upwards
     if total < settings.FREE_DELIVERY_THRESHOLD:
         delivery = math.ceil(total * Decimal(settings.STANDARD_DELIVERY_PERCENTAGE / 100))
+        print("Total & Delivery")
+        print(total, delivery)
         free_delivery_delta = settings.FREE_DELIVERY_THRESHOLD - total
     else:
         delivery = 0
         free_delivery_delta = 0
 
     grand_total = delivery + total
-
+    print("Grand Total is ")
+    print(grand_total)
     context = {
         'bag_items': bag_items,
         'total': total,
@@ -54,5 +57,7 @@ def bag_contents(request):
         'free_delivery_threshold': settings.FREE_DELIVERY_THRESHOLD,
         'grand_total': grand_total,
     }
+    print("Conxt for bag_contents is :")
+    print(context)
 
     return context

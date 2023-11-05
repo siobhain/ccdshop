@@ -199,7 +199,7 @@ if 'USE_AWS' in os.environ:
     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
 
 # Use by bag/contexts.py for calculating delivery charge
-FREE_DELIVERY_THRESHOLD = 10
+FREE_DELIVERY_THRESHOLD = 1000
 STANDARD_DELIVERY_PERCENTAGE = 10
 
 # Stripe settings
