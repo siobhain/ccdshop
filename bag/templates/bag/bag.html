@@ -53,7 +53,7 @@
                                             {% endif %}</p>
                                     </td>
                                     <td class="py-3">
-                                        <p class="my-0"><strong>{% retrieve_quantity item.quantity item.size %}</strong> @ €{{ item.product.price }}</p>
+                                        <p class="my-0"><strong>{% retrieve_quantity item.quantity item.size %}</strong> @ €{{ item.product.price }} each</p>
                                     </td>
                                     <td class="py-3 w-25">
                                         <form class="form update-form" method="POST" action="{% url 'adjust_bag' item.item_id %}">

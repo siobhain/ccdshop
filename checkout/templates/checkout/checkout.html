@@ -43,15 +43,15 @@
                                 {% if item.product.image %}
                                     <img class="w-100" src="{{ item.product.image.url }}" alt="{{ product.name }}">
                                 {% else %}
-                                    <img class="w-100" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
+                                    <img class="w-100" src="{{ MEDIA_URL }}ImageComingSoon.jpg" alt="{{ product.name }}">
                                 {% endif %}
                             </a>
                         </div>
                         <div class="col-7">
                             <p class="my-0"><strong>{{ item.product.name }}</strong></p>
-                            <p class="my-0 small">Size: {% if item.product.sizeable %}{{ item.size|upper }}{% else %}N/A{% endif %}</p>
-                            <p class="my-0 small text-muted">Qty: {{ item.quantity }}</p>
-                        </div>
+                            <p class="my-0">{% retrieve_quantity item.quantity item.size %} @ €{{ item.product.price }} each</p>
+                            <p class="my-0">{% if item.product.sizeable %} Size : {{ item.size|upper }}{% endif %}</p>
+                       </div>
                         <div class="col-3 text-right">
                             <p class="my-0 small text-muted">€{% calc_subtotal item.product.price item.quantity item.size %}</p>
                         </div>
@@ -65,9 +65,9 @@
                         <p class="my-0">Grand Total:</p>
                     </div>
                     <div class="col-3">
-                        <p class="my-0">${{ total }}</p>
-                        <p class="my-0">${{ delivery }}</p>
-                        <p class="my-0"><strong>${{ grand_total }}</strong></p>
+                        <p class="my-0">€{{ total }}</p>
+                        <p class="my-0">€{{ delivery }}</p>
+                        <p class="my-0"><strong>€{{ grand_total }}</strong></p>
                     </div>
                 </div>
             </div>
@@ -128,7 +128,7 @@
 							<span class="icon">
 								<i class="fas fa-exclamation-circle"></i>
 							</span>
-							<span>Your card will be charged <strong>${{ grand_total }}</strong></span>
+							<span>Your card will be charged <strong>€{{ grand_total }}</strong></span>
 						</p>
 					</div>
                 </form>
