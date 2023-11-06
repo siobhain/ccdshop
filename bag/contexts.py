@@ -46,7 +46,7 @@ def bag_contents(request):
         free_delivery_delta = 0
 
     grand_total = delivery + total
-    print("Grand Total is ")
+    print("Grand Total is from bag_contents in contexts.py")
     print(grand_total)
     context = {
         'bag_items': bag_items,
@@ -57,7 +57,7 @@ def bag_contents(request):
         'free_delivery_threshold': settings.FREE_DELIVERY_THRESHOLD,
         'grand_total': grand_total,
     }
-    print("Conxt for bag_contents is :")
+    print("Context for bag_contents is :")
     print(context)
 
     return context

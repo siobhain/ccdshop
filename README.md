@@ -36,6 +36,32 @@ There is redundancy build into the Checkout app during Stripe payment processing
 #### Responsive
 
 The delivery banner (`#delivery-banner`) not displayed on screens < 480 px 
+
+### Deploy
+
+- Create a Database eg Elephant SQL
+- Create a new Heroku app
+- Connect the db to local development server
+- Confirm DB is connected
+- first deploy with debug off & disable collect static
+- upload media to s3 & grant public access
+- create new stripe webhook endpoint (url for heroku app)
+- reveal and add webhook signing secret to heroku config vars matching var names in settings.py
+
+
+ Deployment 
+- The site was deployed to GitHub pages. The steps to deploy are as follows:
+  - In the GitHub repository, navigate to the Settings tab.
+  - Open the pages tab on the left hand side of the page.
+  - From the source section drop-down menu, select the Master Branch.
+  - Once the master branch has been selected, the page will be automatically refreshed with a detailed ribbon display to indicate the successful deployment.
+<!-- Deployment code and content taken straight from Code Institutes README template -->
+
+- You can view the live site 
+
+
+
+
 ## Gitpod Reminders
 
 To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
