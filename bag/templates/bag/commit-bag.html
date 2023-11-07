@@ -33,20 +33,20 @@
                         <div class="row">
                             <div class="col">
                                 {% include "bag/checkout-buttons.html" %}
-                                <p class="text-muted mb-5">Scroll down for summary of your bag contents</p>
+                                <p class="text-muted mb-5">A summary of your bag contents is below</p>
                             </div>
                         </div>
                         {% for item in bag_items %}
                             <div class="row">
-                                <div class="col-12 col-sm-6 mb-1">
+                                <div class="col-12 col-sm-6 mb-2">
                                     {% include "bag/product-image.html" %}
                                 </div>
-                                <div class="col-12 col-sm-6 mb-1">
+                                <div class="col-12 col-sm-6 mb-2">
                                     {% include "bag/product-info.html" %}
                                 </div>
                                 <div class="col-12 col-sm-6 order-sm-last">
-                                    <p class="my-0">{% retrieve_quantity item.quantity item.size %} @ €{{ item.product.price }} each
-                                    <strong> Subtotal: </strong>€{% calc_subtotal item.product.price item.quantity item.size %}</p> 
+                                    <p class="my-0">Price Each: ${{ item.product.price }}</p>
+                                    <p><strong>Subtotal: </strong>${{ item.product.price | calc_subtotal:item.quantity }}</p>
                                 </div>
                                 <div class="col-12 col-sm-6">
                                     {% include "bag/quantity-form.html" %}
@@ -64,11 +64,11 @@
                         <table class="table table-sm table-borderless">
                             <thead class="text-black">
                                 <tr>
-                                    <th scope="col" class="text-right">Product Information</th>
+                                    <th scope="col">Product Info</th>
                                     <th scope="col"></th>
-                                    <th scope="col">Details</th>
+                                    <th scope="col">Price</th>
                                     <th scope="col">Qty</th>
-                                    <th scope="col" class="text-right">Subtotal</th>
+                                    <th scope="col">Subtotal</th>
                                 </tr>
                             </thead>
 
@@ -81,13 +81,13 @@
                                         {% include "bag/product-info.html" %}
                                     </td>
                                     <td class="py-3">
-                                        <p class="my-0">{% retrieve_quantity item.quantity item.size %} @ €{{ item.product.price }} each</p>
+                                        <p class="my-0">${{ item.product.price }}</p>
                                     </td>
                                     <td class="py-3 w-25">
                                         {% include "bag/quantity-form.html" %}
                                     </td>
-                                    <td class="py-3 text-right">
-                                        <p class="my-0">€{% calc_subtotal item.product.price item.quantity item.size %}</p>
+                                    <td class="py-3">
+                                        <p class="my-0">${{ item.product.price | calc_subtotal:item.quantity }}</p>
                                     </td>
                                 </tr>
                             {% endfor %}
@@ -119,7 +119,6 @@
 
 {% block postloadjs %}
 {{ block.super }}
- <!-- Back to top -->
 <script type="text/javascript">
     $('.btt-link').click(function(e) {
         window.scrollTo(0,0)

@@ -1,3 +1,4 @@
+{% load bag_tools %}
 <div class="toast custom-toast rounded-0 border-top-0" data-autohide="false">
     <div class="arrow-up arrow-success"></div>
     <div class="w-100 toast-capper bg-success"></div>
@@ -27,9 +28,8 @@
                             {% endif %}
                         </div>
                         <div class="col-9">
-                            <p class="my-0"><strong>{{ item.product.name }}</strong></p>
-                            <p class="my-0 small">Size: {% if item.product.sizeable %}{{ item.size|upper }}{% else %}N/A{% endif %}</p>
-                            <p class="my-0 small text-muted">Qty: {{ item.quantity }}</p>
+                            <p class="my-0"><strong>{{ item.product.name }}{% if item.product.sizeable %} Size:{{ item.size|upper }}{% endif %}</strong></p>
+                            <p class="mb-1">{% retrieve_quantity item.quantity item.size %} @ €{{ item.product.price }} each = <strong>€{% calc_subtotal item.product.price item.quantity item.size %}</strong>
                         </div>
                     </div>
                 {% endfor %}
