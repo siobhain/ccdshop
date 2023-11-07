@@ -3,21 +3,12 @@ html {
 }
 
 body {
-    background: url('/media/YoureAStarWithAHeartofGoldSolidGold.jpg') no-repeat center center fixed;
+    background: url('/media/GoldStar.jpg') no-repeat center center fixed;
     background-size: cover;
     height: calc(100vh - 164px);
     color: #555;
     font-family: 'Roboto', 'Lucida Grande', sans-serif;
 }
-
-/* Remove the small arrows in the number box on each line of shopping bag */
-
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
 
 /* from Bulma */
 .icon {
@@ -97,6 +88,38 @@ a.category-badge > span.badge:hover {
     background: #212529 !important;
     color: #fff !important;
 }
+
+
+/* from CSS-tricks.com: https://css-tricks.com/snippets/css/css-triangle/ */
+.arrow-up {
+    width: 0; 
+    height: 0; 
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent; 
+    border-bottom: 10px solid black;
+    position: absolute;
+    top: -10px;
+    right: 36px;
+}
+
+/* Convenience classes - colors copied from Bootstrap */
+
+.arrow-success {
+    border-bottom-color: #28a745 !important;
+}
+
+.arrow-danger {
+    border-bottom-color: #dc3545 !important;
+}
+
+.arrow-warning {
+    border-bottom-color: #ffc107 !important;
+}
+
+.arrow-info {
+    border-bottom-color: #17a2b8 !important;
+}
+
 
 /* Back To Top btt */
 
@@ -191,6 +214,14 @@ input[name='q']::placeholder {
     height: 2px;
 }
 
+/* Remove the small arrows in the number box on each line of shopping bag */
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 /* Product Form for administrator */
 
 .btn-file {
@@ -223,6 +254,7 @@ input[name='q']::placeholder {
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */
+
 @media (min-width: 1200px) {
   .container {
     max-width: 80%;
@@ -255,14 +287,49 @@ input[name='q']::placeholder {
     body {
         height: calc(100vh - 116px);
     }
-
 }
 
-/* Don't display banner on < 480 screens */
+/* Banner breaks at < 478px, navbar wraps at 400px, Reduce size & padding of elements */
 
 @media (max-width: 480px) {
-    #delivery-banner {
-      display: none;
+    
+    body {
+        height: calc(100vh - 116px);
+    }
+
+    .display-4.logo-font.text-black {
+        font-size: 2rem;
+    }
+
+    .nav-link {
+        padding: 0.15rem;
+    }
+
+    .nav-link i.fa-lg {
+        font-size: 1rem;
+    }
+
+    .navbar-toggler {
+        padding: .6rem .6rem;
+        font-size: 1rem;
+    }
+
+    #delivery-banner h4 {
+        font-size: .9rem;
+    }
+
+    .btn.btn-outline-black.rounded-0,
+    .btn.btn-black.rounded-0 {
+        padding: .375rem .375rem;
+    }
+
+    .btn.btn-outline-black.rounded-0.btn-lg,
+    .btn.btn-black.rounded-0.btn-lg {
+        padding: .375rem .375rem;
+        font-size: .75rem;
+    }
+
+    .increment-qty, .decrement-qty {
+        padding: .25rem .5rem !important;
     }
 }
-  
