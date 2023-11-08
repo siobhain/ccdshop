@@ -1,0 +1,7 @@
+   
+  python3 -m flake8  
+    bag       Clear
+    products  Clear
+    checkout  See co-f8.txt
+    home        Clear 
+    profiles  Clear

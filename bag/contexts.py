@@ -37,7 +37,9 @@ def bag_contents(request):
                 })
 # Use math.ceil to round upwards
     if total < settings.FREE_DELIVERY_THRESHOLD:
-        delivery = math.ceil(total * Decimal(settings.STANDARD_DELIVERY_PERCENTAGE / 100))
+        delivery = math.ceil(
+            total * Decimal(settings.STANDARD_DELIVERY_PERCENTAGE / 100)
+        )
         print("Total & Delivery")
         print(total, delivery)
         free_delivery_delta = settings.FREE_DELIVERY_THRESHOLD - total

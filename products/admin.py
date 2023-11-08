@@ -2,12 +2,15 @@ from django.contrib import admin
 from .models import Category, Collection, Product
 
 # Register your models here.
+
+
 class CategoryAdmin(admin.ModelAdmin):
     list_display = (
         'friendly_name',
         'engravable',
         'sizeable',
     )
+
 
 class CollectionAdmin(admin.ModelAdmin):
     list_display = (
@@ -26,6 +29,7 @@ class ProductAdmin(admin.ModelAdmin):
         'image'
     )
     ordering = ('name',)
+
 
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Collection, CollectionAdmin)

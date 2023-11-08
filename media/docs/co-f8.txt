@@ -1,0 +1,5 @@
+checkout/apps.py:9:9: F401 'checkout.signals' imported but unused
+checkout/webhook_handler.py:80:80: E501 line too long (80 > 79 characters)
+checkout/webhook_handler.py:81:80: E501 line too long (80 > 79 characters)
+checkout/webhooks.py:26:5: F841 local variable 'e' is assigned to but never used
+checkout/webhooks.py:29:5: F841 local variable 'e' is assigned to but never used
