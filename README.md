@@ -117,6 +117,14 @@ Tips
 Research other ecommerce businesses that sell similar products or services to your idea. What marketing practices do they employ? Which ones appear to be working best?
 Document your process. If you are planning for your final project, keep this documentation for your README.
 
+#### Bugs
+
+#### Favicon
+
+The favicon has not rendered on the deployed version & still trying to correct this at writing.   It did appear on the development sever 
+
+#### 404
+
 
 
 
