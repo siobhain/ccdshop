@@ -1,0 +1,3 @@
+User-agent *
+Disallow: /accounts/
+Sitemap:/https://memorylane-jewellery-63c74e421293.herokuapp.com/

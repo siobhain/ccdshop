@@ -59,6 +59,64 @@ The delivery banner (`#delivery-banner`) not displayed on screens < 480 px
 
 - You can view the live site 
 
+### Credits
+#### Images taken from https://www.cooksongold.com/
+
+#### Last page of LMS
+Important information regarding your E-Commerce Applications Portfolio Project
+Congratulations on completing the Boutique Ado walkthrough project!
+
+As indicated prior to the Boutique Ado walkthrough project, the following ‘Introduction to Search Engine Optimization’ and ‘Web Marketing’ modules contain important information that will be required for your final portfolio project.
+
+Concepts that will be required for your final project include:
+
+SEO implementation, including:
+A robots.txt file
+A sitemap.xml file
+Descriptive meta tags
+rel attributes on links to external resources
+Marketing techniques, including:
+The need for the creation of either a real Facebook business page, or a mockup of one.
+A newsletter signup form, either through a service such as MailChimp or through a custom implemented one.
+The requirements for an e-commerce business model:
+The necessity for the inclusion of an e-commerce business model, highlighting the purpose of the application as either B2B or B2C focused, and detailing the core business intents and marketing strategies for the application.
+Questions to ask yourself:
+What do your users need?
+What information and features can you provide to meet those needs?
+How can you make the information easy to understand?
+How can you demonstrate expertise, authoritativeness and trustworthiness in your content?
+Would there be other pages within your own site you could link to from your chosen page?
+Are there opportunities to link back to external websites that already rank highly on Google?
+How can you help users discover other relevant parts of your web application?
+Tips
+Research other sites that already meet the needs your users have, find examples of how they accomplish that.
+Use the keyword list you created in the Keyword challenge to help prompt further ideas
+Document your process. If you’re planning for your final project, keep this documentation for your README.
+
+
+### marketing
+Marketing Types Challenge
+In our last videos, we explained some of the pros and cons of each marketing type, and we talked about which businesses they suit.
+
+In this unit we’re going to challenge you to use what you have learned and plan which marketing types to use for an ecommerce business.
+
+Using the ecommerce business idea you chose for the keywords and content challenges:
+Your own project idea (possibly for your final project)
+A pizza restaurant, based in Dublin, that takes online orders for delivery.
+Plan out which marketing types you think would work best for your chosen business. Jot down which ones you think the business would benefit from using, and why.
+
+Questions to ask yourself
+Who are your users?
+Which online platforms would you find lots of your users?
+Would your users use social media? If yes, which platforms do you think you would find them on?
+What do your users need? Could you meet that need with useful content? If yes, how could you best deliver that content to them?
+Would your business run sales or offer discounts? How do you think your users would most like to hear about these offers?
+What are the goals of your business? Which marketing strategies would offer the best ways to meet those goals?
+Would your business have a budget to spend on advertising? Or would it need to work with free or low cost options to market itself?
+Tips
+Research other ecommerce businesses that sell similar products or services to your idea. What marketing practices do they employ? Which ones appear to be working best?
+Document your process. If you are planning for your final project, keep this documentation for your README.
+
 
 
 
