@@ -13,7 +13,7 @@
                 <a href="/products/?sort=price&direction=asc" class="dropdown-item">By Price</a>
                 <a href="/products/?sort=rating&direction=desc" class="dropdown-item ">By Rating</a>
                 <a href="/products/?sort=category&direction=asc" class="dropdown-item ">By Category</a>
-                <a href="{% url 'products' %}" class="dropdown-item">All Products</a>
+                <a href="{% url 'products' %}" class="dropdown-item">Full Range</a>
             </div>
         </li>
 
@@ -26,31 +26,32 @@
                 <a href="{% url 'products' %}?category=pendants" class="dropdown-item">Pendants</a>
                 <a href="{% url 'products' %}?category=bracelets" class="dropdown-item">Bracelets</a>
                 <a href="{% url 'products' %}?category=rings" class="dropdown-item">Rings</a>
-                <a href="{% url 'products' %}?category=earrings,pendants,bracelets,rings" class="dropdown-item">All For Her</a>
+                <a href="{% url 'products' %}" class="dropdown-item">Full Range</a>
             </div>
         </li>
 
         <li class="nav-item dropdown">
-            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="wedding-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Wedding Couples
+            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="metal-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Color
             </a>
-            <div class="dropdown-menu border-0" aria-labelledby="wedding-link">
-                <a href="" class="dropdown-item">Enganement Rings</a>
-                <a href="" class="dropdown-item">Wedding Band Pairs</a>
-                <a href="" class="dropdown-item">Wedding Bands For Him</a>
-                <a href="" class="dropdown-item">Wedding Bands For her</a>
+            <div class="dropdown-menu border-0" aria-labelledby="metal-link">
+                <a href="{% url 'products' %}?collection=plat" class="dropdown-item">Platinium</a>
+                <a href="{% url 'products' %}?collection=gold" class="dropdown-item">Gold</a>
+                <a href="{% url 'products' %}?collection=silver" class="dropdown-item">Silver</a>
+                <a href="{% url 'products' %}?collection=mix" class="dropdown-item">Mix</a>
+                <a href="{% url 'products' %}" class="dropdown-item">Full Range</a>
+
             </div>
         </li>
 
         <li class="nav-item dropdown">
             <a class="logo-font font-weight-bold nav-link text-black" href="#" id="specials-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Offers EndMainNav
+                Specials
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="specials-link">
-                <a href="" class="dropdown-item">New Arrivals</a>
-                <a href="" class="dropdown-item">Deals</a>
-                <a href="" class="dropdown-item">Clearance</a>
-                <a href="" class="dropdown-item">All Offers</a>
+                <a href="{% url 'products' %}?description=new" class="dropdown-item">New</a>
+                <a href="{% url 'products' %}?description=clear" class="dropdown-item">Clearance</a>
+                <a href="{% url 'products' %}?description=new,clear" class="dropdown-item">All Specials</a>
             </div>
         </li>
     </ul>

@@ -49,39 +49,3 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
-# Want to  Dynamically set size choices based on category
-# but could not get working
-# have to park size for moment in order to make progress
-    # SIZE_CHOICES = []
-    # RING_SIZES = [
-    #     ('D', 'D'),
-    #     ('E', 'E'),
-    #     ('F', 'F'),
-    #     # Add more once get this working
-    # ]
-
-    # CHAIN_LENGTH = [
-    #     ('Small', 'Small 16 inch'),
-    #     ('Medium', 'Medium 18 inch'),
-    #     ('Large', 'Large 20 inch'),
-    # ]
-
-    # size = models.CharField(
-    #     max_length=10,
-    #     choices=SIZE_CHOICES,
-    #     blank=True,
-    #     null=True,
-    # )
-
-    # def __init__(self, *args, **kwargs):
-    #     super(Product, self).__init__(*args, **kwargs)
-    #     if category.sizeable:
-    #         if category.name == 'Rings':
-    #             self.SIZE_CHOICES = self.RING_SIZES
-    #         elif category.name == 'Pendants':
-    #             self.SIZE_CHOICES = self.CHAIN_LENGTH
-    #         else:
-    #  Defensive warning needed, Should not get to this else section
-    #             self.SIZE_CHOICES = []
-    #     else:
-    #         self.SIZE_CHOICES = []

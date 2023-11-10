@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q, F
 from django.db.models.functions import Lower
 
-from .models import Product, Category
+from .models import Product, Category, Collection
 from .forms import ProductForm
 
 
@@ -15,7 +15,7 @@ def all_products(request):
 
     products = Product.objects.all()
     query = None
-    # collections = None
+    collections = None
     categories = None
     sort = None
     direction = None
@@ -40,6 +40,25 @@ def all_products(request):
             categories = request.GET['category'].split(',')
             products = products.filter(category__name__in=categories)
             categories = Category.objects.filter(name__in=categories)
+        
+        if 'collection' in request.GET:
+            collections = request.GET['collection']
+            print(collections)
+            products = products.filter(collection__name__icontains=collections)
+            print(products)
+            collections = Collection.objects.filter(name__icontains=collections)    
+            print(collections)
+
+        if 'description' in request.GET:
+            descriptions = request.GET['description']
+            descriptions = request.GET['descriptions'].split(',')
+            products = products.filter(product__description__icontains=descriptions)
+           
+
+#  collection = request.GET['collection'].split(',')
+#             products = products.filter(collection__name__in=collections)
+#             collections = Collection.objects.filter(name__in=collections)    
+
 
         if 'q' in request.GET:
             query = request.GET['q']
@@ -58,6 +77,8 @@ def all_products(request):
         'search_term': query,
         'current_categories': categories,
         'current_sorting': current_sorting,
+        'current_collection': collections,
+        'current_descriptions': descriptions
     }
 
     return render(request, 'products/products.html', context)
