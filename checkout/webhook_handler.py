@@ -59,7 +59,8 @@ class StripeWH_Handler:
 
         billing_details = stripe_charge.billing_details
         shipping_details = intent.shipping
-        grand_total = math.ceil(stripe_charge.amount / 100)
+        # grand_total = math.ceil(stripe_charge.amount / 100)
+        grand_total = round(stripe_charge.amount / 100)
 
         # Clean data in the shipping details for save to db Order
         for field, value in shipping_details.address.items():
@@ -85,7 +86,7 @@ class StripeWH_Handler:
         attempt = 1
         while attempt <= 5:
             try:
-                print("Attempt, Value")
+                print("Attempt, Value, No ceil, round")
                 print(attempt, grand_total)
                 order = Order.objects.get(
                     full_name__iexact=shipping_details.name,
@@ -130,6 +131,7 @@ class StripeWH_Handler:
                     county=shipping_details.address.state,
                     original_bag=bag,
                     stripe_pid=pid,
+                    CreatedByWebhook = True,
                 )
                 for item_id, item_data in json.loads(bag).items():
                     product = Product.objects.get(id=item_id)

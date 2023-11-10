@@ -37,6 +37,7 @@ class Product(models.Model):
     description = models.TextField()
     image = models.ImageField(default='default_product_image.jpg')
     sizeable = models.BooleanField(default=False, null=True, blank=True)
+    engrave = models.BooleanField(default=False)
     category = models.ForeignKey(
         'Category', null=True, blank=True, on_delete=models.SET_NULL)
     collection = models.ForeignKey(
@@ -44,10 +45,6 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=4, decimal_places=0)
     rating = models.DecimalField(
         decimal_places=1, max_digits=2, null=True, blank=True)
-    engrave_text = models.CharField(max_length=12, null=True, blank=True)
-    engrave_style = models.CharField(max_length=12, null=True, blank=True)
-    engrave_cost = models.DecimalField(
-        max_digits=6, decimal_places=2, null=True, blank=True)
 
     def __str__(self):
         return self.name
