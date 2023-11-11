@@ -32,7 +32,7 @@
 
         <li class="nav-item dropdown">
             <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="metal-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Color
+                Design
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="metal-link">
                 <a href="{% url 'products' %}?collection=plat" class="dropdown-item">Platinium</a>
@@ -49,9 +49,8 @@
                 Specials
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="specials-link">
-                <a href="{% url 'products' %}?description=new" class="dropdown-item">New</a>
-                <a href="{% url 'products' %}?description=clear" class="dropdown-item">Clearance</a>
-                <a href="{% url 'products' %}?description=new,clear" class="dropdown-item">All Specials</a>
+                <a href="{% url 'products' %}?description=new" class="dropdown-item">Latest Designs</a>
+                <a href="{% url 'products' %}?description=discount" class="dropdown-item">Offers</a>
             </div>
         </li>
     </ul>

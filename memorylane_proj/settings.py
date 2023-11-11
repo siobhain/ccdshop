@@ -26,6 +26,8 @@ if 'DEVELOPMENT' in os.environ:
     DEBUG = True
 # else:
 #     DEBUG = False
+DEBUG = True
+
 
 ALLOWED_HOSTS = ['memorylane-jewellery-63c74e421293.herokuapp.com', '8000-siobhain-ccdshop-r642nktecba.ws-eu106.gitpod.io','8000-siobhain-ccdshop-0p289gfmil7.ws-eu106.gitpod.io']
 

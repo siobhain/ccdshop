@@ -15,6 +15,7 @@ def all_products(request):
 
     products = Product.objects.all()
     query = None
+    query_term = None
     collections = None
     categories = None
     sort = None
@@ -39,33 +40,35 @@ def all_products(request):
         if 'category' in request.GET:
             categories = request.GET['category'].split(',')
             products = products.filter(category__name__in=categories)
-            categories = Category.objects.filter(name__in=categories)
-        
+            print("the category, the products return by filter")
+            print(categories, products)
+ 
         if 'collection' in request.GET:
             collections = request.GET['collection']
             products = products.filter(collection__name__icontains=collections)
             collections = Collection.objects.filter(name__icontains=collections)    
 
+        """
+        Specials Dropdown Handler :
+        Based on the text of Product Description field
+        New Designs -> New products have string "new" in their description
+        Offers ->  Clearance products have "discount" amount in their product description field
+        """
         if 'description' in request.GET:
-            descriptions = request.GET['description']
-            descriptions = request.GET['descriptions'].split(',')
-            products = products.filter(product__description__icontains=descriptions)
-           
-
-#  collection = request.GET['collection'].split(',')
-#             products = products.filter(collection__name__in=collections)
-#             collections = Collection.objects.filter(name__in=collections)    
-
+            query_term = request.GET['description']
+            q_special = Q(description__icontains=query_term)
+            products = products.filter(q_special)
 
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
                 messages.error(request, "You didn't enter search criteria!")
                 return redirect(reverse('products'))
-
             queries = Q(name__icontains=query) | Q(
                 description__icontains=query)
             products = products.filter(queries)
+            print("the Q query, The Q object =queries, the products returned after Q object")
+            print(query, queries, products)
 
     current_sorting = f'{sort}_{direction}'
 
@@ -75,7 +78,6 @@ def all_products(request):
         'current_categories': categories,
         'current_sorting': current_sorting,
         'current_collection': collections,
-        'current_descriptions': descriptions
     }
 
     return render(request, 'products/products.html', context)

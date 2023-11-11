@@ -35,7 +35,6 @@ def bag_contents(request):
                     'product': product,
                     'size': size,
                 })
-# remove math.ceil
     if total < settings.FREE_DELIVERY_THRESHOLD:
         delivery = round(
             total * Decimal(settings.STANDARD_DELIVERY_PERCENTAGE / 100)
