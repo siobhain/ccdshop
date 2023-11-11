@@ -86,8 +86,6 @@ class StripeWH_Handler:
         attempt = 1
         while attempt <= 5:
             try:
-                print("Attempt, Value, No ceil, round")
-                print(attempt, grand_total)
                 order = Order.objects.get(
                     full_name__iexact=shipping_details.name,
                     email__iexact=billing_details.email,
@@ -103,7 +101,6 @@ class StripeWH_Handler:
                     original_bag=bag,
                     stripe_pid=pid,
                 )
-                print("In WHH & Found Order")
                 order_exists = True
                 break
             except Order.DoesNotExist:
@@ -159,7 +156,6 @@ class StripeWH_Handler:
                     content=f'WH rec by ccdshop: {event["type"]} | ERROR: {e}',
                     status=500)
         self._send_confirmation_email(order)
-        print("creating order in wh")
         return HttpResponse(
             content=f'WH rec by ccdshop: {event["type"]} | \
                 SUCCESS: Created order in webhook',

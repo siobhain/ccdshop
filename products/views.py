@@ -43,11 +43,8 @@ def all_products(request):
         
         if 'collection' in request.GET:
             collections = request.GET['collection']
-            print(collections)
             products = products.filter(collection__name__icontains=collections)
-            print(products)
             collections = Collection.objects.filter(name__icontains=collections)    
-            print(collections)
 
         if 'description' in request.GET:
             descriptions = request.GET['description']
