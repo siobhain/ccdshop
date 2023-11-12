@@ -19,7 +19,10 @@ body {
     color: black;
     text-align: center;
   }
-  
+
+.allow-footer-space {
+    margin-bottom: 1.5rem;
+}
 /* from Bulma */
 .icon {
     align-items: center;
@@ -67,7 +70,7 @@ body {
 .btn-black:hover,
 .btn-black:active,
 .btn-black:focus {
-    background: #222;
+    background: #303030;
     color: white;
 }
 
@@ -137,8 +140,10 @@ a.category-badge > span.badge:hover {
     height: 42px;
     width: 42px;
     position: fixed;
-    bottom: 10px;
+    bottom: 20px;
     right: 10px;
+    background-color: #f6db90;
+    z-index: 99999999999;
 }
 
 .btt-link,
@@ -199,8 +204,8 @@ input[name='q']::placeholder {
 .allauth-form-inner-content button:hover,
 .allauth-form-inner-content input[type='submit']:hover {	
 	color: #fff;
-    background-color: #222;
-    border-color: #222;
+    background-color: #303030;
+    border-color: #303030;
 }
 
 .allauth-form-inner-content a {

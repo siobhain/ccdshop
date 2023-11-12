@@ -25,6 +25,7 @@ def cache_checkout_data(request):
         stripe.PaymentIntent.modify(pid, metadata={
             'bag': json.dumps(request.session.get('bag', {})),
             'save_info': request.POST.get('save_info'),
+            'subscribe': request.POST.get('subscribe'),
             'username': request.user,
         })
         return HttpResponse(status=200)
@@ -90,6 +91,8 @@ def checkout(request):
 
             # Save the info to the user's profile if all is well
             request.session['save_info'] = 'save-info' in request.POST
+            request.session['subscribe'] = 'subscribe' in request.POST
+
             return redirect(reverse('checkout_success',
                             args=[order.order_number]))
         else:
@@ -150,6 +153,7 @@ def checkout_success(request, order_number):
     Handle successful checkouts
     """
     save_info = request.session.get('save_info')
+    subscribe = request.session.get('subscribe')
     order = get_object_or_404(Order, order_number=order_number)
 
     if request.user.is_authenticated:
@@ -172,10 +176,15 @@ def checkout_success(request, order_number):
             user_profile_form = UserProfileForm(profile_data, instance=profile)
             if user_profile_form.is_valid():
                 user_profile_form.save()
+        if subscribe: 
+            profile.subscribe_newsletter = subscribe
+            thank_you = "\n\nThank you for subscribing to quarterly newsletter"
+        else:
+            thank_you = "\n\nThank you"
 
     messages.success(request, f'Order successfully processed! \
         Your order number is {order_number}. A confirmation \
-        email will be sent to {order.email}.')
+        email will be sent to {order.email}.{thank_you}')
 
     if 'bag' in request.session:
         del request.session['bag']
