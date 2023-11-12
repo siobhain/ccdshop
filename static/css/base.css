@@ -8,7 +8,6 @@ body {
     height: calc(100vh - 164px);
     color: #555;
     font-family: 'Roboto', 'Lucida Grande', sans-serif;
-    background-color: #f6db90;
 }
 
 .footer {
@@ -344,3 +343,12 @@ input[type=number]::-webkit-outer-spin-button {
         padding: .25rem .5rem !important;
     }
 }
+
+@media (max-width: 680px) {
+    .footer-large {
+      display: none;
+    }
+    .footer-small {
+      display: block;
+    }
+  }

@@ -143,15 +143,19 @@
     {% endblock %}
 
     {% block footer %}
-        <div class="footer">
-            <!-- <p> -->
-                Copyright © 2023 Memory Lane Jewellery.  Educational Use Only.
+        <div class="footer footer-small">
+                © 2023 MLJ Educational&nbsp&nbsp
                 <a href="{{ MEDIA_URL }}docs/MemoryLaneJewelleryPrivacyNotice.htm">Privacy Policy</a>
-            <!-- </p> -->
+                &nbsp&nbsp&nbsp
+                <a href="#" target="_blank"><i class="fab fa-facebook-square"></i> </a>
         </div>
-
+        <div class="footer footer-large">
+             Copyright © 2023 Memory Lane Jewellery. &nbsp Educational Use Only. &nbsp
+            <a href="{{ MEDIA_URL }}docs/MemoryLaneJewelleryPrivacyNotice.htm">Privacy Policy</a>
+            &nbsp&nbsp
+            <a href="#" target="_blank"><i class="fab fa-facebook-square"></i> Facebook</a>
+        </div>
     {% endblock %}
-
 
     {% block postloadjs %}
     <script type="text/javascript">
