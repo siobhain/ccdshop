@@ -8,8 +8,19 @@ body {
     height: calc(100vh - 164px);
     color: #555;
     font-family: 'Roboto', 'Lucida Grande', sans-serif;
+    background-color: #f6db90;
 }
 
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #f6db90;
+    color: black;
+    text-align: center;
+  }
+  
 /* from Bulma */
 .icon {
     align-items: center;
