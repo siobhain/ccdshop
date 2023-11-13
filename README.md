@@ -1,8 +1,17 @@
+![Am I responsive](media/docs/amires.JPG)
+
 # ![MLJ logo](static/favicon-32x32.png) Memory Lane Jewellery
 
+### About 
 
+Memory Lane Jewellery is a fictional online jewellery store selling handmade jewellery.  All pieces are designed and carefully crafted by master goldsmith Siobhan O'Brien. She has created a range of jewellery that can be of sentimental & nostalgic value to whomever wears it.  Each is designed to help create precious memories,  mark milestones & is made from highest quality precious metals for you to enjoy over a lifetime & cherish as family heirlooms.
+Message from Siobhan
+I can offer custom engravings on my rings & pendants.  Please contact xxx-xxx-xxxx to arrange.
 
-About 
+### B2C
+
+This is a business to customer application.  There are several products and a single payment per order. Customers can purchase anonymously or can register for an account in which case they can safe their delivery informaiton &/or subscribe to a quarterly newsletter.  PAyment is via Stripe & banking details are held or saved.
+
 
 Memory Lane Jewellery is a fictional online jewellery store selling handmade jewellery.  All pieces are designed and carefully crafted by master goldsmith Siobhan O'Brien. She has created a range of jewellery that can be of sentimental & nostalgic value to whomever wears it.  Each is designed to help create precious memories,  mark milestones & is made from highest quality precious metals for you to enjoy over a lifetime & cherish as family heirlooms.
 Message from Siobhan
@@ -10,6 +19,12 @@ I can offer custom engravings on my rings & pendants.  Please contact xxx-xxx-xx
 
 ### !(https://docs.djangoproject.com/en/3.2/ref/models/expressions/#using-f-to-sort-null-values) F Object
 Used this along with nulls_last on descending sort when Ratings field has null
+
+### UX
+#### Wireframes
+
+
+
 
 #### Checkout
 
