@@ -155,6 +155,7 @@ def checkout_success(request, order_number):
     save_info = request.session.get('save_info')
     subscribe = request.session.get('subscribe')
     order = get_object_or_404(Order, order_number=order_number)
+    thank_you = "Thank you."
 
     if request.user.is_authenticated:
         profile = UserProfile.objects.get(user=request.user)
@@ -178,13 +179,11 @@ def checkout_success(request, order_number):
                 user_profile_form.save()
         if subscribe: 
             profile.subscribe_newsletter = subscribe
-            thank_you = "\n\nThank you for subscribing to quarterly newsletter"
-        else:
-            thank_you = "\n\nThank you"
-
+            thank_you = "Thank you for subscribing to quarterly newsletter"
+        
     messages.success(request, f'Order successfully processed! \
         Your order number is {order_number}. A confirmation \
-        email will be sent to {order.email}.{thank_you}')
+        email will be sent to {order.email}\r{thank_you}')
 
     if 'bag' in request.session:
         del request.session['bag']
