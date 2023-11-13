@@ -2,7 +2,10 @@
 
 # ![MLJ logo](static/favicon-32x32.png) Memory Lane Jewellery
 
-Unfortunatley the README is incomplete and sorry to the reader a bit messy as 500 server error etc kept me from spengin time in this, apologies
+
+- You can view the live site here (https://memorylane-jewellery-63c74e421293.herokuapp.com/bag/)
+
+Unfortunatley the README is incomplete and sorry to the reader a bit messy as late in the day 500 server error etc kept me from spending time in this, apologies
 
 ### About 
 
