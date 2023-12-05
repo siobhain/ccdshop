@@ -158,6 +158,16 @@ input[name='q']::placeholder {
     color: #aab7c4;
 }
 
+/* Dropdown menu */
+
+.dropdown-menu,
+.dropdown:hover {
+    background-color: #f6db90;
+}
+
+*/
+
+
 /* Allauth form formatting */
 
 .allauth-form-inner-content p {

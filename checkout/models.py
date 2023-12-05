@@ -81,6 +81,7 @@ class OrderLineItem(models.Model):
     # S, M, L, XL & Ring Sizes in D, E, F
     product_size = models.CharField(max_length=2, null=True, blank=True)
     quantity = models.IntegerField(null=False, blank=False, default=0)
+    engrave_text = models.CharField(max_length=10, null=True, blank=True)
     lineitem_total = models.DecimalField(
         max_digits=6, decimal_places=0,
         null=False, blank=False, editable=False
