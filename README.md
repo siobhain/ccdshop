@@ -16,7 +16,7 @@ I can offer custom engravings on my rings & pendants.  Please contact xxx-xxx-xx
 
 ### B2C
 
-This is a business to customer application.  There are several products and a single payment per order. Customers can purchase anonymously or can register for an account in which case they can safe their delivery informaiton &/or subscribe to a quarterly newsletter.  PAyment is via Stripe & banking details are held or saved.
+This is a business to customer application.  There are several products and a single payment per order. Customers can purchase anonymously or can register for an account in which case they can safe their delivery informaiton &/or subscribe to a quarterly newsletter.  Payment is via Stripe & banking details are not held or saved.
 
 ### Agile
 
@@ -25,7 +25,7 @@ This is a business to customer application.  There are several products and a si
 
 ### UX
 
-The UX of Boutique is followed almost exactly, I was hoping to put more of my own stamp on it after getting MVP workinf etc but alas ran out of time.
+The UX of Boutique is followed almost exactly, I was hoping to put more of my own stamp on it after getting MVP working etc but alas ran out of time.
 
 #### Wireframes
 
