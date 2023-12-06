@@ -24,6 +24,8 @@ def add_to_bag(request, item_id):
     size = None
     if 'product_size' in request.POST:
         size = request.POST['product_size']
+    if 'engrave_text' in request.POST:
+        engrave_text = request.POST['engrave_text']    
     bag = request.session.get('bag', {})
 
     if size:
@@ -31,19 +33,24 @@ def add_to_bag(request, item_id):
             if size in bag[item_id]['items_by_size'].keys():
                 bag[item_id]['items_by_size'][size] += quantity
                 messages.success(request,
-                                 (f'Updated size {size.upper()} '
-                                  f'{product.name} quantity to '
-                                  f'{bag[item_id]["items_by_size"][size]}'))
+                                #  (f'Updated size {size.upper()} '
+                                 (f'Updated {product.name} quantity to '
+                                  f'{bag[item_id]["items_by_size"][size]}'
+                                  f' for Size : {size.upper()} '
+                                  ))
             else:
                 bag[item_id]['items_by_size'][size] = quantity
                 messages.success(request,
-                                 (f'Added size {size.upper()} '
-                                  f'{product.name} to your bag'))
+                                 (f'Added {product.name}'
+                                  f' Size : {size.upper()}'
+                                  f' to your bag '))
         else:
             bag[item_id] = {'items_by_size': {size: quantity}}
             messages.success(request,
-                             (f'Added size {size.upper()} '
-                              f'{product.name} to your bag'))
+                                (f'Added {product.name}'
+                                 f' Size : {size.upper()}'
+                                 f' to your bag '))
+                          
     else:
         if item_id in list(bag.keys()):
             bag[item_id] += quantity

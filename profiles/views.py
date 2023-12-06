@@ -46,8 +46,7 @@ def order_history(request, order_number):
         f'This is a past confirmation for order number {order_number}.',
         f'A confirmation email was sent to you on the {ddmmmyy}'
     ))
-    print('order date')
-    print(order_date)
+
     template = 'checkout/checkout_success.html'
     context = {
         'order': order,
