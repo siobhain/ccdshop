@@ -74,11 +74,19 @@ def checkout(request):
                     else:
                         for size, quantity in item_data['items_by_size'].items(
                         ):
+                            if "_" in size:
+                                engrave_split = size.split('_')
+                                size_only = engrave_split[0]
+                                engrave_text = engrave_split[1]
+                            else:
+                                size_only = size
+                                engrave_text = ""
                             order_line_item = OrderLineItem(
                                 order=order,
                                 product=product,
                                 quantity=quantity,
-                                product_size=size,
+                                product_size=size_only,
+                                engrave_text=engrave_text,
                             )
                             order_line_item.save()
                 except Product.DoesNotExist:

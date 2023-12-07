@@ -29,11 +29,20 @@ def bag_contents(request):
             for size, quantity in item_data['items_by_size'].items():
                 total += quantity * product.price
                 product_count += quantity
+                if "_" in size:
+                    engrave_split = size.split('_')
+                    size_only = engrave_split[0]
+                    engrave_text = engrave_split[1]
+                else:
+                    size_only = size
+                    engrave_text = ""
                 bag_items.append({
                     'item_id': item_id,
                     'quantity': item_data,
                     'product': product,
                     'size': size,
+                    'size_only': size_only,
+                    'engrave_text': engrave_text,
                 })
     if total < settings.FREE_DELIVERY_THRESHOLD:
         delivery = round(
