@@ -29,6 +29,9 @@ def add_to_bag(request, item_id):
     if 'engrave_text' in request.POST and 'engrave_checkbox' in request.POST:
         engrave_text = request.POST['engrave_text'] 
         engrave_message = (f' to be engraved with {engrave_text}')
+    size_only = size
+    if size and engrave_text:
+        size = size_only + "_" + engrave_text
     bag = request.session.get('bag', {})
 
     if size:
@@ -37,28 +40,30 @@ def add_to_bag(request, item_id):
                 if engrave_text:
                     messages.error(request,
                                     (f'Sorry Cannot process {product.name} {engrave_message}'
-                                    f' as you already have this size in your bag & it is possible '
-                                    f'engravings become mixed up, If you need separate engravings'
-                                    f'on same item+size you will need to create a separate order'
+                                    f' as this engraving is already in your bag If you need to'
+                                    f' change the quantity please remove the existing item so '
+                                    f' you can add the new quantity to the bag, Thank you'
                                     ))
                 else:
                     bag[item_id]['items_by_size'][size] += quantity
                     messages.success(request,
                                     (f'Updated {product.name} quantity to '
                                     f'{bag[item_id]["items_by_size"][size]}'
-                                    f' for Size : {size.upper()}'
+                                    f' for Size : {size_only.upper()}'
                                     ))
             else:
+                # if engrave_text:
+                #     size = size + "_" + engrave_text
                 bag[item_id]['items_by_size'][size] = quantity 
                 messages.success(request,
                                  (f'Added {product.name}'
-                                  f' Size : {size.upper()}'
+                                  f' Size : {size_only.upper()}'
                                   f' to your bag {engrave_message}'))
         else:
             bag[item_id] = {'items_by_size': {size: quantity}}
             messages.success(request,
                                 (f'Added {product.name}'
-                                 f' Size : {size.upper()}'
+                                 f' Size : {size_only.upper()}'
                                  f' to your bag {engrave_message}'))
                           
     else:
@@ -66,10 +71,10 @@ def add_to_bag(request, item_id):
             bag[item_id] += quantity
             messages.success(request,
                              (f'Updated {product.name} '
-                              f'quantity to {bag[item_id]} {engrave_message}'))
+                              f'quantity to {bag[item_id]}'))
         else:
             bag[item_id] = quantity
-            messages.success(request, f'Added {product.name} to your bag{engrave_message}')
+            messages.success(request, f'Added {product.name} to your bag')
 
     request.session['bag'] = bag
     return redirect(redirect_url)
