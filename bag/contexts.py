@@ -13,7 +13,7 @@ def bag_contents(request):
     product_count = 0
 
     bag = request.session.get('bag', {})
-    print("session bag in context contents Gona iterate this to created bag_items ")
+    print("SESSION BAG in context contents - so this is what bag contains ")
     print(bag)
     for item_id, item_data in bag.items():
         if isinstance(item_data, int):
@@ -30,10 +30,9 @@ def bag_contents(request):
             for size, quantity in item_data['items_by_size'].items():
                 total += quantity * product.price
                 product_count += quantity
-                if "_" in size:
-                    engrave_split = size.split('_')
-                    size_only = engrave_split[0]
-                    engrave_text = engrave_split[1]
+                if "_" in size: # unwrap size & text from compound key separated by _
+                    size_only = size.split('_')[0]
+                    engrave_text = size.split('_')[1]
                 else:
                     size_only = size
                     engrave_text = ""
@@ -66,6 +65,7 @@ def bag_contents(request):
     }
     print("bag_items - a list of dictionaries")
     print(bag_items)
+    print("item by line")
     for item in context['bag_items']:
         print(item)
     return context

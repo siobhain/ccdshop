@@ -140,13 +140,20 @@ class StripeWH_Handler:
                         )
                         order_line_item.save()
                     else:
-                        for size, quantity in item_data['items_by_size'].items(
+                        for details, quantity in item_data['items_by_size'].items(
                         ):
+                            if "_" in details: # unwrap size & engravetext from compound key (details) separated by _
+                                size_only = details.split('_')[0]
+                                engrave_text = details.split('_')[1]
+                            else:
+                                size_only = details
+                                engrave_text = ""
                             order_line_item = OrderLineItem(
                                 order=order,
                                 product=product,
                                 quantity=quantity,
-                                product_size=size,
+                                product_size=size_only,
+                                engrave_text=engrave_text,
                             )
                             order_line_item.save()
             except Exception as e:
