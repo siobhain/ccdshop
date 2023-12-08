@@ -24,12 +24,13 @@ def add_to_bag(request, item_id):
     size = None
     engrave_text = ""
     engrave_message = ""
+    print("POST in")
     print(request.POST)
     if 'product_size' in request.POST:
         size = request.POST['product_size']
     if 'engrave_text' in request.POST and 'engrave_checkbox' in request.POST:
         engrave_text = request.POST['engrave_text'] 
-        engrave_message = (f' engraved with {engrave_text}')
+        engrave_message = (f' engraved with ({engrave_text}) ')
     size_only = size
     if size and engrave_text:
         size = size_only + "_" + engrave_text
@@ -38,26 +39,21 @@ def add_to_bag(request, item_id):
     if size:
         if item_id in list(bag.keys()):
             if size in bag[item_id]['items_by_size'].keys():
-                if engrave_text:
-                    messages.error(request,
-                                    (f'Sorry Cannot process {product.name} {engrave_message}'
-                                    f' as this engraving is already in your bag, NEED TO CHANGE If you need to'
-                                    f' change the quantity please remove the existing item so '
-                                    f' you can add this to the bag, Thank you'
-                                    ))
-                else:
-                    bag[item_id]['items_by_size'][size] += quantity
-                    messages.success(request,
-                                    (f'Updated quantity of {product.name} Size: {size_only.upper()}'
-                                    f'to {bag[item_id]["items_by_size"][size]}'
-                                    ))
+                # same size and same engraving already in bag
+                bag[item_id]['items_by_size'][size] += quantity
+                messages.success(request,
+                                (f'Updated quantity of {product.name} Size: {size_only.upper()}'
+                                f'{engrave_message} to {bag[item_id]["items_by_size"][size]}'
+                                ))
             else:
+                # add to bag : product already in bag but new size &/or engraving (new key)
                 bag[item_id]['items_by_size'][size] = quantity 
                 messages.success(request,
                                  (f'Added {product.name}'
                                   f' Size : {size_only.upper()}'
                                   f' to your bag {engrave_message}'))
         else:
+            # Product not in bag until now 
             bag[item_id] = {'items_by_size': {size: quantity}}
             messages.success(request,
                                 (f'Added {product.name}'
@@ -65,6 +61,7 @@ def add_to_bag(request, item_id):
                                  f' to your bag {engrave_message}'))
                           
     else:
+        # Product without sizing or engraving
         if item_id in list(bag.keys()):
             bag[item_id] += quantity
             messages.success(request,
@@ -87,6 +84,9 @@ def adjust_bag(request, item_id):
     size = None
     if 'product_size' in request.POST:
         size = request.POST['product_size']
+        print(request.POST)
+        print("product_size from POST is")
+        print(size)
         if "_" in size:
             engrave_split = size.split('_')
             size_only = engrave_split[0]
