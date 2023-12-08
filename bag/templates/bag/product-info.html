@@ -1,2 +1,7 @@
 <p class="my-0"><strong>{{ item.product.name }}</strong></p>
-<p class="my-0"><strong>Size: </strong>{% if item.product.sizeable %}{{ item.size|upper }}{% else %}N/A{% endif %}</p>
+{% if item.product.sizeable %}
+    <p class="my-0"><strong>Size: </strong>{{ item.size_only|upper }}</p>
+{% endif %}
+{% if item.product.engrave %}
+    <p class="my-0"><strong>Engrave: </strong>{% if item.engrave_text %}{{ item.engrave_text }}{% else %}N/A{% endif %}</p>
+{% endif %}

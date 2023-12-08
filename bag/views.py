@@ -41,7 +41,7 @@ def add_to_bag(request, item_id):
                 if engrave_text:
                     messages.error(request,
                                     (f'Sorry Cannot process {product.name} {engrave_message}'
-                                    f' as this engraving is already in your bag, If you need to'
+                                    f' as this engraving is already in your bag, NEED TO CHANGE If you need to'
                                     f' change the quantity please remove the existing item so '
                                     f' you can add this to the bag, Thank you'
                                     ))
@@ -107,7 +107,7 @@ def adjust_bag(request, item_id):
             if not bag[item_id]['items_by_size']:
                 bag.pop(item_id)
             messages.success(
-                request, f'Removed {product.name}, size {size_only.upper()} \
+                request, f'Removed {product.name} Size {size_only.upper()} \
                     from your bag'
                     )
     else:
@@ -137,7 +137,7 @@ def remove_from_bag(request, item_id):
             if not bag[item_id]['items_by_size']:
                 bag.pop(item_id)
             messages.success(
-                request, f'Removed {product.name}, Size {size.split("_")[0].upper()} \
+                request, f'Removed {product.name} Size {size.split("_")[0].upper()} \
                     from your bag'
                     )
         else:
