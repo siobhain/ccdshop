@@ -77,8 +77,8 @@ There is redundancy build into the Checkout app during Stripe payment processing
 - Create a Database eg Elephant SQL
 - Create a new Heroku app
 - Connect the db to local development server
-- Confirm DB is connected
-- first deploy with debug off & disable collect static
+- ConfirmD DB is connected
+- eploy with debug off & disable collect static
 - upload media to s3 & grant public access
 - create new stripe webhook endpoint (url for heroku app)
 - reveal and add webhook signing secret to heroku config vars matching var names in settings.py
@@ -92,6 +92,61 @@ There is redundancy build into the Checkout app during Stripe payment processing
   - Once the master branch has been selected, the page will be automatically refreshed with a detailed ribbon display to indicate the successful deployment.
 
 - You can view the live site here (https://memorylane-jewellery-63c74e421293.herokuapp.com/bag/)
+
+# Deployment
+
+To clone this repository & run it locally
+1. Login to GitHub (https://wwww.github.com)
+2. Select the repository `siobhain/ccdshop``
+3. Click the Code button and copy the HTTPS url
+4. In your IDE, open a terminal and paste the git clone command `git clone https://github.com/siobhain/ccdshop.git`
+5. The repository will now be cloned in your workspace
+6. Create an env.py file in the root folder of your project, add these env variables with your own values, Ensure you add env.py to .gitignore so none of these values are held in version control
+<br>
+<code>import os</code>
+<br><code>os.environ['DEVELOPMENT'] = 'your own value here'</code>
+<br><code>os.environ['SECRET_KEY'] = "your own values here" </code>
+<br><code>os.environ['DATABASE_URL'] = 'your own value here'</code>
+<br><code>os.environ['STRIPE_PUBLIC_KEY'] = 'your own value here'</code>
+<br><code>os.environ['STRIPE_SECRET_KEY'] = 'your own value here'</code>
+<br>
+7. Run `pip install -r requirements.txt` to install the required packages as per the requirements.txt file
+8. Setup your DATABASES in the settings.py `
+DATABASES = {
+    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+}`
+9. Set debug to true in the settings.py file for local development
+10. Add your hostname to the ALLOWED_HOSTS variable in settings.py
+11. Run "python3 manage.py makemigrations" to make migrations
+12. Run "python3 manage.py migrate" to create the database tables
+13. Run "python3 manage.py createsuperuser" to create a super/admin user
+14. Start the application by running `python3 manage.py runserver`
+
+## Heroku
+This project can be deployed to Heroku with the following steps:
+1. Create an account on [Heroku](https://www.heroku.com/)
+2. Create an app, give it a name for example myshop, and select a reg
+3. Create a Database for example I used Elephant SQL 
+- Create a new Heroku app
+- Connect the db to local development server
+- ConfirmD DB is connected
+- eploy with debug off & disable collect static
+- upload media to s3 & grant public access
+- create new stripe webhook endpoint (url for heroku app)
+- reveal and add webhook signing secret to heroku config vars matching var names in settings.pyion
+
+3. Under resources search for postgres, and add a Postgres database to the app
+4. Note the DATABASE_URL, this needs to be set as an environment variable in Heroku and your local environment variables
+5. Create a Procfile with the text: web: gunicorn myshop.wsgi
+6. Add your production environment variables (env.py) to Heroku's Config Vars
+7. In the settings.py ensure the connection is to the Heroku postgres database
+8. Ensure debug is set to false in the settings.py file
+9. Add 'localhost/127.0.0.1', and 'myshop.herokuapp.com' to the ALLOWED_HOSTS variable in settings.py
+10. Run "python3 manage.py showmigrations" to check the status of the migrations
+11. Run "python3 manage.py migrate" to migrate the database
+12. Run "python3 manage.py createsuperuser" to create a super/admin user
+13. Connect the app to GitHub, and enable automatic deploys from main
+14. Click deploy to deploy your application to Heroku for the first time
 
 
 ### Credits
