@@ -74,28 +74,7 @@ There is redundancy build into the Checkout app during Stripe payment processing
  
 ### Deploy
 
-- Create a Database eg Elephant SQL
-- Create a new Heroku app
-- Connect the db to local development server
-- ConfirmD DB is connected
-- eploy with debug off & disable collect static
-- upload media to s3 & grant public access
-- create new stripe webhook endpoint (url for heroku app)
-- reveal and add webhook signing secret to heroku config vars matching var names in settings.py
-
-
- Deployment 
-- The site was deployed to GitHub pages. The steps to deploy are as follows:
-  - In the GitHub repository, navigate to the Settings tab.
-  - Open the pages tab on the left hand side of the page.
-  - From the source section drop-down menu, select the Master Branch.
-  - Once the master branch has been selected, the page will be automatically refreshed with a detailed ribbon display to indicate the successful deployment.
-
-- You can view the live site here (https://memorylane-jewellery-63c74e421293.herokuapp.com/bag/)
-
-# Deployment
-
-To clone this repository & run it locally
+To clone repository & run it locally
 1. Login to GitHub (https://wwww.github.com)
 2. Select the repository `siobhain/ccdshop``
 3. Click the Code button and copy the HTTPS url
@@ -110,7 +89,7 @@ To clone this repository & run it locally
 <br><code>os.environ['STRIPE_PUBLIC_KEY'] = 'your own value here'</code>
 <br><code>os.environ['STRIPE_SECRET_KEY'] = 'your own value here'</code>
 <br>
-7. Run `pip install -r requirements.txt` to install the required packages as per the requirements.txt file
+7. Run `pip install -r requirements.txt` to install all required packages as per the requirements.txt file
 8. Setup your DATABASES in the settings.py `
 DATABASES = {
     'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
@@ -122,31 +101,27 @@ DATABASES = {
 13. Run "python3 manage.py createsuperuser" to create a super/admin user
 14. Start the application by running `python3 manage.py runserver`
 
-## Heroku
-This project can be deployed to Heroku with the following steps:
-1. Create an account on [Heroku](https://www.heroku.com/)
-2. Create an app, give it a name for example myshop, and select a reg
-3. Create a Database for example I used Elephant SQL 
-- Create a new Heroku app
-- Connect the db to local development server
-- ConfirmD DB is connected
-- eploy with debug off & disable collect static
-- upload media to s3 & grant public access
-- create new stripe webhook endpoint (url for heroku app)
-- reveal and add webhook signing secret to heroku config vars matching var names in settings.pyion
-
-3. Under resources search for postgres, and add a Postgres database to the app
-4. Note the DATABASE_URL, this needs to be set as an environment variable in Heroku and your local environment variables
-5. Create a Procfile with the text: web: gunicorn myshop.wsgi
-6. Add your production environment variables (env.py) to Heroku's Config Vars
-7. In the settings.py ensure the connection is to the Heroku postgres database
-8. Ensure debug is set to false in the settings.py file
-9. Add 'localhost/127.0.0.1', and 'myshop.herokuapp.com' to the ALLOWED_HOSTS variable in settings.py
-10. Run "python3 manage.py showmigrations" to check the status of the migrations
-11. Run "python3 manage.py migrate" to migrate the database
-12. Run "python3 manage.py createsuperuser" to create a super/admin user
-13. Connect the app to GitHub, and enable automatic deploys from main
-14. Click deploy to deploy your application to Heroku for the first time
+To deploy project on Heroku 
+1. You will need accounts on [Heroku](https://www.heroku.com/), [Stripe](https://dashboard.stripe.com/) & [AWS](https://portal.aws.amazon.com/billing/signup#/start/email) & a database.
+2. Create a new app on/heroku, give it a name for example myshop, and select your region
+3. Create a Database for example I used Elephant SQL or you can use Heroku Postgres
+  - Connect the db to Heroku app
+  - Confirm DB is connected
+4. Upload static and media files to AWS s3 & grant public access
+5. Create new stripe webhook endpoint (url for heroku app)
+6. Add these production environment variables (env.py) to Heroku's Config Vars
+  - USE_AWS (set to True to use AWS)
+  - AWS_ACCESS_KEY_ID (for access to AWS)
+  - AWS_SECRET_ACCESS_KEY (for access to AWS)
+  - SECRET_KEY: (Your secret key)
+  - DATABASE_URL: (example Elephant DQL)
+  - EMAIL_HOST_USER: (email address)
+  - EMAIL_HOST_PASS: (email app password)
+  - STRIPE_PUBLIC_KEY (Stripes public key)
+  - STRIPE_SECRET_KEY (Stripes secret key)
+  - STRIPE_WH_SECRET (Stripes Web Hook secret key)
+7. On the Heroku deploy tab, Connect to GitHub & search for `siobhain/ccdshop`` repository 
+Select Manual deploy and choose the main branch, Click Deploy & watch build logs to ensure deployed ok
 
 
 ### Credits
