@@ -22,11 +22,10 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-# if 'DEVELOPMENT' in os.environ:
-#     DEBUG = True
-# else:
-#     DEBUG = False
-DEBUG = False
+if 'DEVELOPMENT' in os.environ:
+    DEBUG = True
+else:
+    DEBUG = False
 
 ALLOWED_HOSTS = ['memorylane-jewellery-63c74e421293.herokuapp.com', '8000-siobhain-ccdshop-r642nktecba.ws-eu106.gitpod.io', '8000-siobhain-ccdshop-0p289gfmil7.ws-eu106.gitpod.io']
 

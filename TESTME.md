@@ -1,13 +1,12 @@
 # TESTING
 
-## 🚀 TABLE OF CONTENTS
+## TABLE OF CONTENTS
 
 * [RESPONSIVENESS TESTING](#responsiveness-testing)
 * [BROWSER COMPABILITY TESTING](#browser-compability-testing)
 * [BUGS RESOLVED AND UNRESOLVED](#bugs-resolved-and-unresolved)
 * [LIGHTHOUSE REPORTS](#lighthouse-reports)
 * [CODE VALIDATION](#code-validation)
-* [USER STORIES TESTING](#user-story-testing)
 * [FEATURES TESTING](#features-testing)
 
 Return back to the [README.md](README.md) file.
@@ -16,19 +15,16 @@ Return back to the [README.md](README.md) file.
 
 ## RESPONSIVENESS TESTING
 
-<details>
-<summary>👇</summary>
-
 Both development and deployed versions of the project were tested on multiple devices & via chrome dev tools for responsiveness issues.
 
 ![Responsiveness](docs/amires.JPG)
 
 ## BROWSER COMPABILITY TESTING
 
-<details>
-<summary>👇</summary>
+ 
+ 
 
-The deployed project was tested on 3 browsers to check for compatibility issues and works as expected. 
+The deployed project was tested on 3 browsers to check for compatibility issues and works as expected.
 
 |Browser | Screenshot | 
 |:---:|:---: |
@@ -36,7 +32,7 @@ The deployed project was tested on 3 browsers to check for compatibility issues 
 | FireFox  | ![Firefox](docs/b-firefox.jpg)  |
 | Edge  | ![Edge](docs/b-edge.jpg)  |
 
-</details>
+ 
 
 - - -
 
@@ -44,23 +40,11 @@ The deployed project was tested on 3 browsers to check for compatibility issues 
 
 ☠️ The issues listed  below were indentified during the development of the project.
 
-<details>
-<summary>👇</summary>
-
-
-
-</details>
-
 - - -
 
 ## LIGHTHOUSE REPORTS
 
-<details>
-<summary>👇</summary>
-
-Below are Lighthouse reports for the deployed project, lower than I want on performance & accessibility.  Third party code such as stripe utility , fontawesome CDN, bootstrap CDN, JQuery & google fonts effected performance but as they are necessary I was unable to improve on this. There are duplicate ARIA ID's used by ALLAuth which reduced the accessubility score.  The blue on yellow for the footer does not ahve a sufficient contrast ratio, this may not be corrected before submitting.
-
-
+Below are Lighthouse reports for the deployed project - lower scores than I would like on performance & accessibility.  Third party code such as stripe utility , fontawesome CDN, bootstrap CDN, JQuery & google fonts effected performance but as they are necessary I was unable to improve on this. There are duplicate ARIA ID's used by ALLAuth which reduced the accessubility score.  The blue on yellow for the footer does not have a sufficient contrast ratio, this may not be corrected before submitting.
 
 |Page | Screenshot | 
 |:---:|:---: |
@@ -69,14 +53,11 @@ Below are Lighthouse reports for the deployed project, lower than I want on perf
 |SignIn  |![Todo](docs/l-signin.jpg) |
 |Bag  |![Full](docs/l-bag.jpg) |
 
-</details>
-
 - - -
-
 ## CODE VALIDATION
 
-<details>
-<summary>👇</summary>
+ 
+ 
 
 ### HTML
 
@@ -116,13 +97,11 @@ The [JShint Validator](https://jshint.com/) was used to validate the JavaScript 
 
 The [Code Institute Python Linter](https://pep8ci.herokuapp.com) was used to validate Python files.
 
-As of a week before submitting bag, products, home & profiles apps were cleared of all flake8 errors, checkout had the following
+As of a week before submitting bag, products, home & profiles apps were cleared of all flake8 errors, The only app with flake8 errors is checkout which has the following
 
 ![Checkout](docs/f-checkout.jpg) 
 
- I did not break these 2 E501 lines in webhook handler as = 80 characters and for left alone for readibility.  WRT the F841 on webhooks - the variable e is used as far as I can tell do did not understand this complaint.|
-
-If time allows I hope to check again before submitting.
+ I did not break these 2 E501 lines in webhook handler as = 80 characters and for readibility I left ot alone.  WRT the F841 on webhooks - the variable is used as far as I can tell so did not understand this complaint.  If time allows I hope to check again before submitting.
 
 The [Code Institute Python Linter](https://pep8ci.herokuapp.com) was used to validate Python files.
 
@@ -132,38 +111,81 @@ The [Code Institute Python Linter](https://pep8ci.herokuapp.com) was used to val
 | settings.py |  ![Settings](docs/v-settings.jpg) | Pass |
 | urls.py (main) |  ![Urls](docs/v-purls.jpg) | Pass |
 
-## USER STORY TESTING
-
-<details>
-<summary>👇</summary>
-
-### New Site Users
-
-
-### **Registered Users**
-
-- - -
-
-As a registered user of the site, I want to be able to:
 ## FEATURES TESTING
 
-<details>
-<summary>👇</summary>
+Navigation Links & Menu Items
+TEST            | OUTCOME                          | PASS / FAIL  
+--------------- | -------------------------------- | ---------------
+Home page | Clicking " Memory Lane Jewellery" in the navigation bar redirects to the home page. | PASS
+All products page | When clicking the "Full Range" in the dropdown menus, the category shows a dropdown list so I have access to more sort/filter options. The page heading indicates the users location on the site. | PASS
+Register page | Clicking the "register" link in the navigation bar redirects to the register page. The page heading indicates the users location on the site. | PASS
+Login / Logout page | Clicking the "login" or "logout links in the navigation bar redirects to the login or logout page. | PASS
+Bag page | When clicking the "basket" icon in the navigation bar, the browser redirects me to the bag page. The page heading indicates the users location on the site. | PASS
+My Profile page | When clicking the "My profile" link in the navigation bar, the browser redirects to the profile page. The page heading is "MLJ AUTH" indicates the users location on the site. | PASS
+Product management page | When clicking the "Add New Product" menu item as an admin user, the browser redirects to the product management page. The page heading is "MLJ ADD. | PASS
+Search bar | When searching for a keyword, the results will show products that contain the keyword in the product name or description. The page HEader is "MLJ SHOP" | PASS
 
-</details>
+### Footer
 
-- - -
+TEST            | DETAILS                          | PASS / FAIL  
+--------------- | -------------------------------- | ---------------
+Facebook | Clicking the Facebook icon opens a new tab which displays Mockup of MLJ's facebook page. | PASS
 
-## AUTOMATED TESTING
-
-<details>
-<summary>👇</summary>
-
-There was not automated testing implemented with this project.
-
-- - -
+### Home page
+TEST            | Details                          | PASS / FAIL  
+--------------- | -------------------------------- | ---------------
 
 
-</details>
+### Products page (from `Shop now` or `Continue Shopping` or `Keep Shopping` buttons)
+TEST            | DETAILS                          | PASS / FAIL  
+--------------- | -------------------------------- | ---------------
+Product images | All images displaying correctly  | PASS
+Responsiveness | Check every element on the page for consistent scalability in mobile, tablet and desktop view.| PASS
+Sort | Check sort in both directions by **Price, Rating, Name & Category** to ensure each option reloads the page and sorts the products in the corresponding order sleected. | PASS
+Edit Button (Admin only) | Check the edit button is only displayed when admin user is logged in, Check that when clicked it loads the product management page in order to edit the corresponding product | PASS
+Delete Button (Admin only) | Check the delete button is only displayed when admin user is logged in, Check that when clicked the corresponding product is deleted from the db & a success message that the product has been deleted is displayed | PASS
+
+### Product details page
+TEST            | DETAILS                          | PASS / FAIL  
+--------------- | -------------------------------- | ---------------
+Image | There is one image per product, Ensure the image is displayed correctly | PASS
+Quantity Selector | Check the quantity selector functionality by selecting minus and plus buttons where applicable. Adding a product to the basket to confirm the correct quantity selected is correct. | PASS
+Edit Button (Admin only) | Check the edit button is only displayed when admin user is logged in, Check that when clicked it loads the product management page in order to edit the corresponding product | PASS
+Delete Button (Admin only) | Check the delete button is only displayed when admin user is logged in, Check that when clicked the corresponding product is deleted from the db & a success message that the product has been deleted is displayed | PASS
+
+### Shopping Bag page
+TEST            | DETAILS                          | PASS / FAIL  
+--------------- | -------------------------------- | ---------------
+Items in bag | CONFIRM  - the correct number of items in the bag, 
+- the correct products in the bag, - by quantity, size & engrave option are listed on the page| PASS
+Remove item from cart | Clicking the remove link on an item removes the item from the cart. | PASS
+Quantity Selector | Check the quantity selector functionality by selecting min and plus buttons where applicable. Adding a product to the cart to confirm the correct quantity selected is correct. | PASS
+Free delivery threshold | Adding products to the cart where the grand total value is under £50, the cart shows the free delivery warning message. The message disappears when the grand total is over £50. | PASS
+
+### Checkout page
+TEST            | OUTCOME                          | PASS / FAIL  
+--------------- | -------------------------------- | ---------------
+Media | All media assets are displayed properly, have no pixelation or stretched images and are responsive on all devices. | PASS
+Responsiveness | Check every element on the page for consistent scalability in mobile, tablet and desktop view.| PASS
+Checkout form | Filling in the form with the correct validation processes the order. | PASS
+Checkout form | Filling in the form with the incorrect validation shows errors messages. | PASS
+Save details checkout | Selecting the "Save this delivery information to my profile" checkbox, this saves/updates my profile details. | PASS
+Card authentication | Used the Stripe test card details and purposely failed authenticated to check for error messages. | PASS
+
+### Checkout success page
+TEST            | OUTCOME                          | PASS / FAIL  
+--------------- | -------------------------------- | ---------------
+Responsiveness | Check every element on the page for consistent scalability in mobile, tablet and desktop view.| PASS
+Order history | When clicking on an order number in the order history section, this takes me to a past order confirmation summary page. | PASS
+Updating my profile | When updating the default delivery information, this reflects on the checkout page. | PASS
+
+### Product management page
+TEST            | OUTCOME                          | PASS / FAIL  
+--------------- | -------------------------------- | ---------------
+Responsiveness | Check every element on the page for consistent scalability in mobile, tablet and desktop view.| PASS
+Adding a product | When filling out the form to add a new product, the product is added to the relevant category and is searchable via the search bar. | PASS
+Uploading an image | When uploading an image to a new product, the site shows the name of the file that will be uploaded. When checking the product details page, the image also shows. | PASS
+ 
+
 
 Return back to the [README.md](README.md) file.

@@ -5,23 +5,18 @@
 
 - You can view the live site here (https://memorylane-jewellery-63c74e421293.herokuapp.com/bag/)
 
-Unfortunatley the README is incomplete and sorry to the reader a bit messy as late in the day 500 server error etc kept me from spending time in this, apologies
 
 ### About 
 
-Memory Lane Jewellery is a fictional online jewellery store selling handmade jewellery.  All pieces are designed and carefully crafted by master goldsmith Siobhan O'Brien. She has created a range of jewellery that can be of sentimental & nostalgic value to whomever wears it.  Each is designed to help create precious memories,  mark milestones & is made from highest quality precious metals for you to enjoy over a lifetime & cherish as family heirlooms.
-
-Message from Siobhan
-I can offer custom engravings on my rings & pendants.  Please contact xxx-xxx-xxxx to arrange.
+Memory Lane Jewellery is a fictional online jewellery store selling handmade jewellery.  All pieces are designed and carefully crafted by master goldsmith. She has created a range of jewellery that can be of sentimental & nostalgic value to whomever wears it.  Each is designed to help create precious memories,  mark milestones & is made from highest quality precious metals for you to enjoy over a lifetime & cherish into the future as family heirlooms.
 
 ### B2C
 
-This is a business to customer application.  There are several products and a single payment per order. Customers can purchase anonymously or can register for an account in which case they can safe their delivery informaiton &/or subscribe to a quarterly newsletter.  Payment is via Stripe & banking details are not held or saved.
+This is a business to customer application.  There are several products and a single payment per order. Customers can purchase anonymously or can register for an account in which case they can safe their delivery information &/or subscribe to a quarterly newsletter.  Payment is via Stripe & banking details are not held or saved.
 
 ### Agile
 
 [AGILE.md](AGILE.md) file.
-
 
 ### UX
 
@@ -41,9 +36,10 @@ Site has all the features of Boutique Ado with following additions/amendments
 - Navigation Dropdowns : Browse, For Her, Design, Specials
 - custom helper functions in bag_tools & checkout_tools
 - no decimal places in Product model
-- Product model has 2 boolean fields - sizeable & engrave, Sizeable is used extensively but never got chance to use engrave.
+- Product model has 2 boolean fields - sizeable & engrave.
 - Product model also have Collection field
 - Order model has boolean subscribe_newsletter
+- OrderLineTiem has engrave_text - holds the customers engraving request
 - Items in bag/order/messages  etc are presented  as follows
     ![Bag](docs/bag-sizes.jpg)
 
@@ -57,7 +53,7 @@ The currency is set to Euro in settings.py as all goods are for sale from Irelan
 
 
 #### Product Pricing
-It is a strategic business decision to opt for whole number pricing in order to maintain the feeling of exclusivity and quality in the goods.  The discerening customer would not fall for the charm pricing of say €49.99.
+It is a strategic business decision to opt for whole number pricing in order to maintain the feeling of exclusivity and quality in the goods.  It is thought the discerening customer would not fall for the charm pricing of say €49.99.
 
 #### Stripe Secrets
 
@@ -127,6 +123,8 @@ Select Manual deploy and choose the main branch, Click Deploy & watch build logs
 ### Credits
 
 Images taken from https://www.cooksongold.com/
+
+# TBD
 
 #### Bugs
 
