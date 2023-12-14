@@ -40,7 +40,8 @@ The deployed project was tested on 3 browsers to check for compatibility issues 
 
 ☠️ The issues listed  below were indentified during the development of the project.
 
-- - -
+Custom 404 Page does not load
+I followed 
 
 ## LIGHTHOUSE REPORTS
 
@@ -101,7 +102,7 @@ As of a week before submitting bag, products, home & profiles apps were cleared 
 
 ![Checkout](docs/f-checkout.jpg) 
 
- I did not break these 2 E501 lines in webhook handler as = 80 characters and for readibility I left ot alone.  WRT the F841 on webhooks - the variable is used as far as I can tell so did not understand this complaint.  If time allows I hope to check again before submitting.
+ I did not break these 2 E501 lines in webhook handler as = 80 characters and for readibility I left it alone.  WRT the F841 on webhooks - the "e" variable is used as far as I can tell so I do not understand this complaint.  If time allows I hope to check again before submitting.
 
 The [Code Institute Python Linter](https://pep8ci.herokuapp.com) was used to validate Python files.
 
