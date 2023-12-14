@@ -26,9 +26,9 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 #     DEBUG = True
 # else:
 #     DEBUG = False
-DEBUG = False
 
-ALLOWED_HOSTS = ['memorylane-jewellery-63c74e421293.herokuapp.com', '8000-siobhain-ccdshop-r642nktecba.ws-eu106.gitpod.io', '8000-siobhain-ccdshop-0p289gfmil7.ws-eu106.gitpod.io']
+ALLOWED_HOSTS = ['memorylane-jewellery-63c74e421293.herokuapp.com']
+# ALLOWED_HOSTS = ['memorylane-jewellery-63c74e421293.herokuapp.com', '8000-siobhain-ccdshop-0p289gfmil7.ws-eu106.gitpod.io']
 
 # Application definition
 
