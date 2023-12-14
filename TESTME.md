@@ -148,8 +148,10 @@ Delete Button (Admin only) | Check the delete button is only displayed when admi
 ### Product details page
 TEST            | DETAILS                          | PASS / FAIL  
 --------------- | -------------------------------- | ---------------
-Image | There is one image per product, Ensure the image is displayed correctly | PASS
-Quantity Selector | Check the quantity selector functionality by selecting minus and plus buttons where applicable. Adding a product to the basket to confirm the correct quantity selected is correct. | PASS
+Image | There is one image per product, Ensure the image is displayed correctly on all screen sizes, on clicking the image a larger version is displayed on another tab | PASS
+Details | Confirm correct Name, Price, Category, Rating & Quantity (default 1), & if relevant Size dropdown (default M) & Add Engrave checkbox, Confirm button hover : Continue Shopping  & Add to bag  work as expected | PASS
+Quantity Selector | Check the quantity selector functionality by selecting minus and plus buttons  | PASS
+Add to Bag | Confirm Product, Size, Quantity & Engraving details are added correctly to bag | PASS
 Edit Button (Admin only) | Check the edit button is only displayed when admin user is logged in, Check that when clicked it loads the product management page in order to edit the corresponding product | PASS
 Delete Button (Admin only) | Check the delete button is only displayed when admin user is logged in, Check that when clicked the corresponding product is deleted from the db & a success message that the product has been deleted is displayed | PASS
 
