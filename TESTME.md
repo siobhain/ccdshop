@@ -40,8 +40,8 @@ The deployed project was tested on 3 browsers to check for compatibility issues 
 
 ☠️ The issues listed  below were indentified during the development of the project.
 
-Custom 404 Page does not load
-I followed 
+#### Custom 404 Page does not load
+I followed [these](docs/LMS-addcustome404steps.jpg) instructions on LMS but could not get my own 404 page to load. It proved difficuklt to test as it can only be tested after deployment.  I keep getting Server error 500.  Following several attempts and with deadline approaching I changed tack & decided to use W3Schools simple [implementation of custom 404] (https://www.w3schools.com/django/django_404.php) but same result.  
 
 ## LIGHTHOUSE REPORTS
 
