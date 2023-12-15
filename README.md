@@ -8,7 +8,7 @@
 
 ### About 
 
-Memory Lane Jewellery is a fictional online jewellery store selling handmade jewellery.  All pieces are designed and carefully crafted by master goldsmith. She has created a range of jewellery that can be of sentimental & nostalgic value to whomever wears it.  Each is designed to help create precious memories,  mark milestones & is made from highest quality precious metals for you to enjoy over a lifetime & cherish into the future as family heirlooms.
+Memory Lane Jewellery is a fictional online jewellery store selling handmade jewellery.  All pieces are designed and carefully crafted by master goldsmith Siobhain. She has created a range of jewellery that can be of sentimental & nostalgic value to whomever wears it.  Each is designed to help create precious memories,  mark milestones & is made from highest quality precious metals for you to enjoy over a lifetime & cherish into the future as a family heirloom.
 
 ### B2C
 
@@ -29,7 +29,57 @@ The UX of Boutique is followed almost exactly, I was hoping to put more of my ow
 ![Bag](docs/w-bag.jpg)
 ![Profile](docs/w-profile.jpg)
 
-#### Features
+## Features
+
+### Common Header & Footer
+
+Header ![](docs/f-commonheader.JPG)
+Footer ![](docs/f-commonfooter.JPG)
+
+#### Header Menu & Icons
+
+##### Memory Lane Jewelery 
+If any part of Memory Lane Jewelery or the favicon is clicked it will return user to the home page.
+
+##### Search
+Search is implemeted same as Boutique Ado.
+
+##### My Account
+|No User logged in|Admin logged in|User logged in|
+| :---: |:---:|:---:|
+|![](docs/d-myaccount.JPG)|![](docs/d-admin.JPG)|![](docs/d-mols.JPG)|
+|Option to `Register` as new user or `Login`|Extra Option to `Add product`|Option to view Profile incl order history|
+
+##### Basket 
+The Basket icon when click goes to Shopping Bag page
+
+##### Banner
+Currently the banner has a free delivery message, this may change depending on time of year.
+
+##### Dropdown Menus
+| Browse :`By Price` selected | For Her : `Bracelets` selected|Design  : `Mix` selected|Specials : `Latest Designs` selected|
+| :---: |:---:|:---:|:---:|
+|![](docs/d-browse.JPG)|![](docs/d-forher.JPG)|![](docs/d-design.JPG)|![](docs/d-specials.JPG)|
+
+##### Footer
+![](docs/f-commonfooter.JPG)
+Footer has link to a privacy policy & a mockup facebook business page.
+
+### Home
+![](docs/h-page.JPG)
+The home page has a large `SHOP NOW` button to intice the user to shop, There is hint of the next collection which is called Love-in-Star & a pic of the pendant from this collection.
+
+### SHOP NOW (Products App)
+
+![](docs/p-all.JPG)
+
+The `SHOP NOW` button leads the the all products page, currently 12 in the database.  There is a count on top LHS & a Sort dropdown on RHS, The sort can be by Price, Rating, Name or Category & in either direction.  On large screen porducts are displayed 4 across reducing to 3 on tablet sized screen and eventually stacked on top of each other on small mobile screens.
+
+| Laptop | Tablet | Mobile |
+| :---: |:---:|:---:|
+|![](docs/p-laptop.JPG)|![](docs/p-tablet.JPG)|![](docs/p-mobile.JPG)|
+
+
 
 Site has all the features of Boutique Ado with following additions/amendments
 
@@ -68,7 +118,26 @@ There is redundancy build into the Checkout app during Stripe payment processing
 [TESTME.md](TESTME.md) file.
 
  
-### Deploy
+
+## Search Engine Optimization - SEO #
+
+### Meta Descriptions ##
+
+Where possible I have placed keywords in the page title, make them `<strong>` & added relevant meta keywords so that website is higer ranking & easily crawlable with search engines.
+
+### Sitemap File ##
+
+This file was created with [Free Online Sitemap Generator](www.xml-sitemaps.com) from the deployed site, It is in the  root directory.
+ ![](docs/seo-sitemap.JPG)
+
+### Robots File ##
+
+This is the robots.txt file snippet for this project :
+
+![ScreenShot](docs//seo-robots.JPG)
+
+
+## Deploy
 
 To clone repository & run it locally
 1. Login to GitHub (https://wwww.github.com)

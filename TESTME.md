@@ -111,7 +111,9 @@ The [Code Institute Python Linter](https://pep8ci.herokuapp.com) was used to val
 
 ## FEATURES TESTING
 
-Navigation Links & Menu Items
+### Common header & footer to all pages 
+
+ Navigation Links & Menu Items
 TEST            | OUTCOME                          | PASS / FAIL  
 --------------- | -------------------------------- | ---------------
 Home page | Clicking " Memory Lane Jewellery" in the navigation bar redirects to the home page. | PASS
