@@ -8,7 +8,8 @@
 
 ### About 
 
-Memory Lane Jewellery is a fictional online jewellery store selling handmade jewellery.  All pieces are designed and carefully crafted by master goldsmith Siobhain. She has created a range of jewellery that can be of sentimental & nostalgic value to whomever wears it.  Each is designed to help create precious memories,  mark milestones & is made from highest quality precious metals for you to enjoy over a lifetime & cherish into the future as a family heirloom.
+Memory Lane Jewellery is a fictional online jewellery store selling handmade jewellery.  All pieces are designed and carefully crafted by master goldsmith Siobhain. She has created a range of jewellery that can be of sentimental & nostalgic value to whomever wears it.  Each is designed to help create precious memories,  mark milestones & is made from highest quality precious metals for you to enjoy over a lifetime & cherish into the future #### Product Pricing
+It is a strategic business decision to opt for whole number pricing in order to maintain the feeling of exclusivity and quality in the goods.  It is thought the discerening customer would not fall for the charm pricing of say €49.99.as a family heirloom.
 
 ### B2C
 
@@ -22,12 +23,7 @@ This is a business to customer application.  There are several products and a si
 
 The UX of Boutique is followed almost exactly, I was hoping to put more of my own stamp on it after getting MVP working etc but alas ran out of time.
 
-#### Wireframes
-
-![Home](docs/w-home.jpg)
-![Products](docs/w-products.jpg)
-![Bag](docs/w-bag.jpg)
-![Profile](docs/w-profile.jpg)
+Link to [WIREFRAMES](WF.md) file.
 
 ## Features
 
@@ -38,8 +34,8 @@ Footer ![](docs/f-commonfooter.JPG)
 
 #### Header Menu & Icons
 
-##### Memory Lane Jewelery 
-If any part of Memory Lane Jewelery or the favicon is clicked it will return user to the home page.
+##### Memory Lane Jewellery 
+If any part of Memory Lane Jewellery or the favicon is clicked it will return user to the home page.
 
 ##### Search
 Search is implemeted same as Boutique Ado.
@@ -51,7 +47,7 @@ Search is implemeted same as Boutique Ado.
 |Option to `Register` as new user or `Login`|Extra Option to `Add product`|Option to view Profile incl order history|
 
 ##### Basket 
-The Basket icon when click goes to Shopping Bag page
+The Basket icon when clicked goes to Shopping Bag page
 
 ##### Banner
 Currently the banner has a free delivery message, this may change depending on time of year.
@@ -63,10 +59,12 @@ Currently the banner has a free delivery message, this may change depending on t
 
 ##### Footer
 ![](docs/f-commonfooter.JPG)
+
 Footer has link to a privacy policy & a mockup facebook business page.
 
 ### Home
 ![](docs/h-page.JPG)
+
 The home page has a large `SHOP NOW` button to intice the user to shop, There is hint of the next collection which is called Love-in-Star & a pic of the pendant from this collection.
 
 ### SHOP NOW (Products App)
@@ -79,6 +77,23 @@ The `SHOP NOW` button leads the the all products page, currently 12 in the datab
 | :---: |:---:|:---:|
 |![](docs/p-laptop.JPG)|![](docs/p-tablet.JPG)|![](docs/p-mobile.JPG)|
 
+Each product has an image, a name and the following details : Category, Price, Rating (see below).  Once the user clicks on an image the product detail page will be loaded.
+
+![](docs/p-ballearrings.JPG)
+
+### Product Detail page
+
+|Product sizeable False|Product sizeable True, engrave False| Product sizeable True, Engrave True|
+|:---: |:---:|:---:|
+|![](docs/pd-geo.JPG)|![](docs/pd-mountain.JPG)|![](docs/pd-band.JPG)|
+
+Once in the product detail page it is possible to add the product to the shopping bag with `Add to Bag` button.  
+Once item is added to the bag the user will get a toast message as follows
+
+
+|Product sizeable False|Product sizeable True, engrave False| Product sizeable True, Engrave True|
+|:---: |:---:|:---:|
+|![](docs/atb-1.JPG)|![](docs/atb-2.JPG)|![](docs/atb-3.JPG)|
 
 
 Site has all the features of Boutique Ado with following additions/amendments
@@ -101,10 +116,6 @@ Site has all the features of Boutique Ado with following additions/amendments
 
 The currency is set to Euro in settings.py as all goods are for sale from Ireland.  Stripe requires all Euro amounts to be provided in cents, cents being the smallest Euro unit.  In keeping with the business strategy of whole number pricing,  it was necessary to round up `grand_total` & `stripe_total` using `math.ceil()` when including delivery costs.
 
-
-#### Product Pricing
-It is a strategic business decision to opt for whole number pricing in order to maintain the feeling of exclusivity and quality in the goods.  It is thought the discerening customer would not fall for the charm pricing of say €49.99.
-
 #### Stripe Secrets
 
 Use `<input type="hidden"..>` to pass the `client_secret` to stripe server, With the hidden attribute set the user cannot view or interact with the value being passed
@@ -115,22 +126,21 @@ There is redundancy build into the Checkout app during Stripe payment processing
 
 ## Testing
 
-[TESTME.md](TESTME.md) file.
+View the [TESTME.md](TESTME.md) file.
 
  
+## Search Engine Optimization - SEO
 
-## Search Engine Optimization - SEO #
-
-### Meta Descriptions ##
+### Meta Descriptions
 
 Where possible I have placed keywords in the page title, make them `<strong>` & added relevant meta keywords so that website is higer ranking & easily crawlable with search engines.
 
-### Sitemap File ##
+### Sitemap File
 
 This file was created with [Free Online Sitemap Generator](www.xml-sitemaps.com) from the deployed site, It is in the  root directory.
  ![](docs/seo-sitemap.JPG)
 
-### Robots File ##
+### Robots File
 
 This is the robots.txt file snippet for this project :
 
@@ -192,15 +202,3 @@ Select Manual deploy and choose the main branch, Click Deploy & watch build logs
 ### Credits
 
 Images taken from https://www.cooksongold.com/
-
-# TBD
-
-#### Bugs
-
-#### Favicon
-
-The favicon has not rendered on the deployed version & still trying to correct this at writing.   It did appear on the development sever 
-
-#### 404
-
-Followed LMS but could not get it working
