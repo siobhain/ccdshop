@@ -42,9 +42,9 @@ def order_history(request, order_number):
     ddmmmyy = order_date.strftime("%d %b %Y")
 
 
-    messages.info(request, (
-        f'This is a past confirmation for order number {order_number}.',
-        f'A confirmation email was sent to you on the {ddmmmyy}'
+    messages.warning(request, (
+        f'This is a COPY of confirmation for order number {order_number}.',
+        f'An email with these details was sent to you on the {ddmmmyy}'
     ))
 
     template = 'checkout/checkout_success.html'
