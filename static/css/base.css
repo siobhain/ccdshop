@@ -70,7 +70,7 @@ body {
 .btn-black:hover,
 .btn-black:active,
 .btn-black:focus {
-    background: #303030;
+    background: #726950;
     color: white;
 }
 
@@ -98,7 +98,7 @@ body {
 }
 
 a.category-badge > span.badge:hover {
-    background: #212529 !important;
+    background: #726950 !important;
     color: #fff !important;
 }
 

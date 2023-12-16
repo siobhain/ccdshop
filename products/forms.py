@@ -9,6 +9,11 @@ class ProductForm(forms.ModelForm):
         model = Product
         fields = '__all__'
 
+        labels = {
+            "sizeable": "Can this item be sized?",
+            "engrave": "Click if this item can be engraved"
+            }
+
     image = forms.ImageField(
         label='Image', required=False, widget=CustomClearableFileInput)
 

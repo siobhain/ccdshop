@@ -11,7 +11,7 @@ def contact_us(request):
         form = ContactUsForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('contactus_success')
+            return redirect('contact_success')
     else:
         form = ContactUsForm()
 
@@ -26,4 +26,4 @@ def contact_success(request):
 
     """ Render the Contact Success HTML page """
 
-    return render(request, 'contactus/contactus_success.html')
+    return render(request, 'contactus/contact_success.html')

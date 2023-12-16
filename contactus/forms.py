@@ -10,15 +10,16 @@ class ContactUsForm(forms.ModelForm):
 
         model = ContactUs
         fields = [
-            "category",
             "name",
             "email",
+            "wedding",
             "subject",
             "message",
         ]
 
         labels = {
             "name": "Full Name",
+            "wedding": "Tick box for Wedding Band Inquiry"
         }
 
         widgets = {
