@@ -21,7 +21,9 @@ This is a business to customer application.  There are several products and a si
 
 ### UX
 
-The UX of Boutique is followed almost exactly, I was hoping to put more of my own stamp on it after getting MVP working etc but alas ran out of time.
+The UX of Boutique is followed almost exactly, I was hoping to put more of my own stamp on it after getting MVP working etc but time not on my side.
+
+![](docs/palette.JPG)
 
 Link to [WIREFRAMES](WF.md) file.
 
