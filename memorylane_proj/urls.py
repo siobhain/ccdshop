@@ -22,4 +22,4 @@ urlpatterns = [
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
-handler404 = handler404
+handler404 = 'memorylane_proj.views.handler404'
