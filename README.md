@@ -8,8 +8,12 @@
 
 ### About 
 
-Memory Lane Jewellery is a fictional online jewellery store selling handmade jewellery.  All pieces are designed and carefully crafted by master goldsmith Siobhain. She has created a range of jewellery that can be of sentimental & nostalgic value to whomever wears it.  Each is designed to help create precious memories,  mark milestones & is made from highest quality precious metals for you to enjoy over a lifetime & cherish into the future #### Product Pricing
-It is a strategic business decision to opt for whole number pricing in order to maintain the feeling of exclusivity and quality in the goods.  It is thought the discerening customer would not fall for the charm pricing of say €49.99.as a family heirloom.
+Memory Lane Jewellery is a fictional online jewellery store selling handmade jewellery.  All pieces are designed and carefully crafted by master goldsmith Julia Diamond. She has created a range of jewellery that can be of sentimental & nostalgic value to whomever wears it.  Each is designed to help create precious memories,  mark milestones & is made from highest quality precious metals to be enjoyed over a lifetime & cherish into the future 
+
+#### Owners Stipulation about Product Pricing & Quantity limits.
+The owner Julia has specified that it is a strategic business decision to opt for whole number pricing in order to maintain the feeling of exclusivity and quality in the goods.  It is thought the discerening customer would not fall for the charm pricing of say €49.99.as a family heirloom. Therefore there are to be no decimal points rendered on the website.
+
+In addition Julia the owner has requested that the quantity ordered be limited to a maximium of 5 as these pieces ahere all handmade and not mass produced.  At times it may be necessary for her to make to order which may result in delays, in those cases s will contact the customer direclty herself.
 
 ### B2C
 
@@ -17,7 +21,7 @@ This is a business to customer application.  There are several products and a si
 
 ### Agile
 
-[AGILE.md](AGILE.md) file.
+[AGILE.md](docs/AGILE.md) file.
 
 ### UX
 
@@ -25,7 +29,7 @@ The UX of Boutique is followed almost exactly, I was hoping to put more of my ow
 
 ![](docs/palette.JPG)
 
-Link to [WIREFRAMES](WF.md) file.
+Link to [WIREFRAMES](docs/WF.md) file.
 
 ## Features
 
@@ -59,6 +63,11 @@ Currently the banner has a free delivery message, this may change depending on t
 | :---: |:---:|:---:|:---:|
 |![](docs/d-browse.JPG)|![](docs/d-forher.JPG)|![](docs/d-design.JPG)|![](docs/d-specials.JPG)|
 
+Update : 
+A `Contact Us` app` was subsequently added so apologies as some screenshots may be out of date & missing the menu item.
+
+![](docs/d-contactus.JPG)
+
 ##### Footer
 ![](docs/f-commonfooter.JPG)
 
@@ -85,17 +94,30 @@ Each product has an image, a name and the following details : Category, Price, R
 
 ### Product Detail page
 
-|Product sizeable False|Product sizeable True, engrave False| Product sizeable True, Engrave True|
+|Product sizeable False|Product sizeable True, engrave False| Product sizeable True, engrave True|
 |:---: |:---:|:---:|
 |![](docs/pd-geo.JPG)|![](docs/pd-mountain.JPG)|![](docs/pd-band.JPG)|
 
 Once in the product detail page it is possible to add the product to the shopping bag with `Add to Bag` button.  
 Once item is added to the bag the user will get a toast message as follows
 
-
 |Product sizeable False|Product sizeable True, engrave False| Product sizeable True, Engrave True|
 |:---: |:---:|:---:|
 |![](docs/atb-1.JPG)|![](docs/atb-2.JPG)|![](docs/atb-3.JPG)|
+
+
+### Bag app
+This page gives the details of items currently in the bag.
+
+![](docs/b-bag.JPG)
+
+ There are `update` and `remove` links under the Quantity selector for each line item in the bag, this allows user to adjust the quantity (via `update`) or remove the item altogether, Doing either will result in the bag being updated and toast message to the user, In these screenshots I show the `update` 
+
+|Adjust Product sizeable False|Adjust Product sizeable True, engrave False| Adjust Product sizeable True, Engrave True|
+|:---: |:---:|:---:|
+|![](docs/b-geo.JPG)|![](docs/b-mount.JPG)|![](docs/b-ring.JPG)|
+
+
 
 
 Site has all the features of Boutique Ado with following additions/amendments
@@ -203,4 +225,8 @@ Select Manual deploy and choose the main branch, Click Deploy & watch build logs
 
 ### Credits
 
-Images taken from https://www.cooksongold.com/
+Code Institutes Boutique Ado
+
+Contactus Page based on [https://github.com/kryspinm97/PP5-EliteTechPC]
+
+Images from https://www.cooksongold.com/

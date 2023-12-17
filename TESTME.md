@@ -39,8 +39,11 @@ The deployed project was tested on 3 browsers to check for compatibility issues 
 ## BUGS RESOLVED AND UNRESOLVED 
 
 #### Custom 404 Page does not load
-I followed these instructions on LMS ![](docs/LMS-addcustome404steps.JPG ) but could not get mycustom 404 page to load. It proved long winded to test as had to be tested after deployment.  I keep getting Server Error 500 ![](docs/404-from-LMS-servererror500.JPG).  Following several attempts and with deadline approaching I changed tack & decided to use W3Schools simple [implementation of custom 404](https://www.w3schools.com/django/django_404.php) but same result. I then removed all custom 404 and deployed to check if django built-in 404 page would display & sure enough it did as per Not Found ![](docs/builtin-Notfound.JPG) & confirmed 404 error code by this heroku log snippet ![](docs/herokulog-404.JPG).  This I was not expecting as I had double & triple checked both LMS & W3Schools implementations of custom 404 so I suspected it may be generic problem with all 404 pages But when the build in diusplayed okay this stumped me.  I could not find any similar problems on slack or stackoverflow. I rolled back ![](docs/rollback.JPG) on the heroku build version & ran app again to check the heroku logs but still the same Server Error 500 & 500 error on the heroku logs ![](docs/herokulog-afterrollback.JPG)
-I have reverted to my custom 404 as per the LMS and am in contact with tutor support (although TUTORING SERVICE LIMITATION atm) at time of writing.
+I followed these instructions on LMS ![](docs/LMS-addcustome404steps.JPG ) but could not get mycustom 404 page to load. It proved long winded to test as had to be tested after deployment.  I keep getting Server Error 500 ![](docs/404-from-LMS-servererror500.JPG).  Following several attempts and with deadline approaching I changed tack & decided to use W3Schools simple [implementation of custom 404](https://www.w3schools.com/django/django_404.php) but same result. I then removed all custom 404 and deployed to check if django built-in 404 page would display & sure enough it did as per Not Found ![](docs/builtin-Notfound.JPG) & confirmed 404 error code by this heroku log snippet ![](docs/herokulog-404.JPG).  This I was not expecting as I had double & triple checked both LMS & W3Schools implementations of custom 404 so I suspected it may be generic problem with all 404 pages But when the build in diusplayed okay this stumped me.  I could not find any similar problems on slack or stackoverflow. I rolled back ![](docs/rollback.JPG) on the heroku build version & ran app again to check the heroku logs but still the same Server Error 500 & 500 error on the heroku logs ![](docs/herokulog-afterrollback.JPG). I have reverted to my custom 404 as per the LMS and am in contact with tutor support (although TUTORING SERVICE LIMITATION atm) at time of writing.
+
+#### Shopping Bag Quantity -/+ Disable Bug
+This is an intermittent bug that I have come across twice now but cannot reproduce at will so difficult to pin it down to fix it so as of 4 days to submission it still exists afaik. The quantity selectors ie the + & - buttons in the shopping bag freeze as if the js `handleEnableDisable` function in `products/templates/products/includes/quantity_input_script.html` disabled both the `plusDisabled & minusDisabled`.
+
 
 
 ## LIGHTHOUSE REPORTS
@@ -158,11 +161,10 @@ Delete Button (Admin only) | Check the delete button is only displayed when admi
 ### Shopping Bag page
 TEST            | DETAILS                          | PASS / FAIL  
 --------------- | -------------------------------- | ---------------
-Items in bag | CONFIRM  - the correct number of items in the bag, 
-- the correct products in the bag, - by quantity, size & engrave option are listed on the page| PASS
+Items in bag | CONFIRM  - the correct number of items in the bag & that the details (Quantity, Size, Engrave Text, Subtotal) of each line is correct| PASS
 Remove item from cart | Clicking the remove link on an item removes the item from the cart. | PASS
-Quantity Selector | Check the quantity selector functionality by selecting min and plus buttons where applicable. Adding a product to the cart to confirm the correct quantity selected is correct. | PASS
-Free delivery threshold | Adding products to the cart where the grand total value is under £50, the cart shows the free delivery warning message. The message disappears when the grand total is over £50. | PASS
+Quantity Selector | Check the quantity selector functionality by selecting min and plus buttons where applicable. Adding a product to the cart to confirm the correct quantity selected is correct. | DOCUMENTED BUG
+Free delivery threshold | Adding products to the cart where the grand total value is under €100, the cart shows the free delivery warning message. The message disappears when the grand total is over €100. | PASS
 
 ### Checkout page
 TEST            | OUTCOME                          | PASS / FAIL  
@@ -180,6 +182,8 @@ TEST            | OUTCOME                          | PASS / FAIL
 Responsiveness | Check every element on the page for consistent scalability in mobile, tablet and desktop view.| PASS
 Order history | When clicking on an order number in the order history section, this takes me to a past order confirmation summary page. | PASS
 Updating my profile | When updating the default delivery information, this reflects on the checkout page. | PASS
+
+### Contact us page
 
 ### Product management page
 TEST            | OUTCOME                          | PASS / FAIL  
