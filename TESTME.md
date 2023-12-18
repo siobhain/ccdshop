@@ -44,6 +44,11 @@ I followed these instructions on LMS ![](docs/LMS-addcustome404steps.JPG ) but c
 #### Shopping Bag Quantity -/+ Disable Bug
 This is an intermittent bug that I have come across twice now but cannot reproduce at will so difficult to pin it down to fix it so as of 4 days to submission it still exists afaik. The quantity selectors ie the + & - buttons in the shopping bag freeze as if the js `handleEnableDisable` function in `products/templates/products/includes/quantity_input_script.html` disabled both the `plusDisabled & minusDisabled`.
 
+#### Product name misalignment
+
+Not so much a bug but need to tidy up presentation of product names in say the Full Range Page, On large screens when 4 product cards across the screen the product name is misaligned in some cases with other product in the row.  This needs investigation but my instinct is that since the image dimensions vary it may be throwing the alignment of the product name. See below for example
+
+![](docs/bug-productname.JPG)
 
 
 ## LIGHTHOUSE REPORTS

@@ -2,7 +2,7 @@
 
 # ![MLJ logo](static/favicon-32x32.png) Memory Lane Jewellery
 
-- You can view the live site here (https://memorylane-jewellery-63c74e421293.herokuapp.com/bag/)
+- You can view the live site here (https://memorylane-jewellery-63c74e421293.herokuapp.com/)
 
 
 ### About 
@@ -37,12 +37,14 @@ Link to [WIREFRAMES.md](docs/WF.md) file.
 ### Common Header & Footer
 
 Header ![](docs/f-commonheader.JPG)
+Hover on `SPECIALS` above
+
 Footer ![](docs/f-commonfooter.JPG)
 
-#### Header Menu & Icons
+#### Header Menu & Icons 
 
 ##### Memory Lane Jewellery 
-If any part of Memory Lane Jewellery or the favicon is clicked it will return user to the home page.
+If any part of Memory Lane Jewellery or the favicon in the header is clicked it will return user to the home page.
 
 ##### Search
 Search is implemeted same as Boutique Ado.
@@ -51,13 +53,10 @@ Search is implemeted same as Boutique Ado.
 |No User logged in|Admin logged in|User logged in|
 | :---: |:---:|:---:|
 |![](docs/d-myaccount.JPG)|![](docs/d-admin.JPG)|![](docs/d-mols.JPG)|
-|Option to `Register` as new user or `Login`|Extra Option to `Add product`|Option to view Profile incl order history|
+|Option to `Register` as new user or `Login`|Extra Options to `Add product` & `View Subscribe list`|Option to view Profile incl order history|
 
 ##### Basket 
 The Basket icon when clicked goes to Shopping Bag page
-
-##### Banner
-Currently the banner has a free delivery message, this may change depending on time of year.
 
 ##### Dropdown Menus
 | Browse :`By Price` selected | For Her : `Bracelets` selected|Design  : `Mix` selected|Specials : `Latest Designs` selected|
@@ -69,12 +68,41 @@ A `Contact Us` app` was subsequently added so apologies as some screenshots may 
 
 ![](docs/d-contactus.JPG)
 
-##### Footer
+###### FOR HER
+The dropdown menus are fairly self explanatory, The 1st `Browse` menu item is a sorting for all products, The following is what is rendered on the `FOR HER` menu
+
+|Earrings|Pendants|
+|:---: |:---:|
+|![](docs/fh-earrings.JPG)|![](docs/fh-pendant.JPG)|
+
+|Bracelets|Rings|
+|:---: |:---:|
+|![](docs/fh-brac.JPG)|![](docs/fh-ring.JPG)|
+
+###### DESIGN
+This is listing product by Platinium,  Gold, Silver or a mix of both Gold & Silver, implemented with the `Collection` model.
+
+###### SPECIALS
+![](docs/d-specials.JPG)
+
+`Latest Designs` are items that have been recently added to the database & are identified by the keyword "NEW" (case insensitive) in the product description, When the admin user is adding the next set of designs hte keyword NEW will need to be removed from the current Latest designs.
+
+`Offers` are items that have been discounted from a previous RRP, usually they are end of line items that are not selling well, They are identified by the keyword "DISCOUNT" (case insensitive) in the product description, Again it is up the the admin user to add this detail to the description when adjusting price.
+
+
+##### Banner
+Currently the banner has a free delivery message, this may change depending on time of year.
+
+
+#####  The Footer
 ![](docs/f-commonfooter.JPG)
 
 Footer has link to a privacy policy & a mockup facebook business page.
 
-### Home Page (All pages include header & footer described above)
+### Home Page 
+
+All pages include common header & footer described above, This is a visual of the home page wihtout common header/footer.
+
 ![](docs/h-page.JPG)
 
 The home page has a large `SHOP NOW` button to intice the user to shop, There is hint of the next collection which is called Love-in-Star & a pic of the pendant from this collection.
@@ -83,7 +111,7 @@ The home page has a large `SHOP NOW` button to intice the user to shop, There is
 
 ![](docs/p-all.JPG)
 
-The `SHOP NOW` button leads the the all products page, currently 12 in the database.  There is a count on top LHS & a Sort dropdown on RHS, The sort can be by Price, Rating, Name or Category & in either direction.  On large screen porducts are displayed 4 across reducing to 3 on tablet sized screen and eventually stacked on top of each other on small mobile screens.
+The `SHOP NOW` button leads the the all products page, currently 12/13 in the database.  There is a count on top LHS & a Sort dropdown on RHS, The sort can be by Price, Rating, Name or Category & in either direction.  On large screen porducts are displayed 4 across reducing to 3 on tablet sized screen and eventually stacked on top of each other on small mobile screens.
 
 | Laptop | Tablet | Mobile |
 | :---: |:---:|:---:|
@@ -173,18 +201,55 @@ There is redundancy build into the Checkout app during Stripe payment processing
 
 ### Contact Us App
 
-ContactUs is a ***standalone*** app whereby users can submit requests or feedback to site owner.
+ContactUs is a ***standalone*** app whereby users can submit requests to site owner.
 
 |ContactUs page|ContactUs Form completed| ContactUs Confirmation|
 |:---: |:---:|:---:|
 |![](docs/cus-form.JPG)|![](docs/cus-formfilled.JPG)|![](docs/cus-formconfirm.JPG)|
 
-& request saved as ContactUs instance on the database
+The user request is saved as a ContactUs instance on the database
 
 |Description|Screenshot|
 |:---: |:---:|
 |Summary|![](docs/db-cus.JPG)|
 |Detail|![](docs/db-cus2.JPG)|
+
+### Superuser / admin Features
+
+The `admin` user has 2 extra menu items on `My Account` along with `edit` & `delete` options on every Product.
+
+
+|Description|Screenshot|
+|:---: |:---:|
+|My Accounts|![](docs/su-menu.JPG)|
+|Products|![](docs/si-editdel.JPG)|
+
+#### Add a new Product to the database
+Choose Add new product from the My Account menu
+
+|Description|Screenshot|
+|:---: |:---:|
+|Add New Page|![](docs/su-add.JPG)|
+|Form Details |![](docs/su-addnew.JPG)|
+|Toast Confirm|![](docs/su-add-confirm.JPG)|
+
+
+This new product is then visible on the database & on website
+
+|Description|Screenshot|
+|:---: |:---:|
+|Database Summary|![](docs/db-new.JPG)|
+|Database Details |![](docs/db-newdetails.JPG)|
+|Shop Latest Designs (When "New" in Product description) |![](docs/new-goldisc.JPG)|
+|Product Details Page |![](docs/new-detail.JPG)|
+
+
+
+
+
+
+
+
 
 
 
