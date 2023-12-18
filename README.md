@@ -2,7 +2,6 @@
 
 # ![MLJ logo](static/favicon-32x32.png) Memory Lane Jewellery
 
-
 - You can view the live site here (https://memorylane-jewellery-63c74e421293.herokuapp.com/bag/)
 
 
@@ -13,7 +12,9 @@ Memory Lane Jewellery is a fictional online jewellery store selling handmade jew
 #### Owners Stipulation about Product Pricing & Quantity limits.
 The owner Julia has specified that it is a strategic business decision to opt for whole number pricing in order to maintain the feeling of exclusivity and quality in the goods.  It is thought the discerening customer would not fall for the charm pricing of say €49.99.as a family heirloom. Therefore there are to be no decimal points rendered on the website.
 
-In addition Julia the owner has requested that the quantity ordered be limited to a maximium of 5 as these pieces ahere all handmade and not mass produced.  At times it may be necessary for her to make to order which may result in delays, in those cases s will contact the customer direclty herself.
+In addition Julia the owner has requested that the quantity ordered be limited to a maximium of 5 as these pieces are all handmade and not mass produced.  At times it may be necessary for her to make to order which may result in delays, in those cases she will contact the customer directly herself.
+
+Owner does not envisage regular newsletters but perhpas quarterly end of line/offers made exclusively to cusomters - as stock is limited - that have registered for account. Therefore owner will not need mailchimp, A simple `subscribe_newsletter` boolean field in the UserProfile model will suffice, When true user will get newsletter otherwise not & Users are presented with choice during checkout process if they would like to signup for newsletter or not.
 
 ### B2C
 
@@ -21,7 +22,7 @@ This is a business to customer application.  There are several products and a si
 
 ### Agile
 
-[AGILE.md](docs/AGILE.md) file.
+Link to [AGILE.md](AGILE.md) file.
 
 ### UX
 
@@ -29,7 +30,7 @@ The UX of Boutique is followed almost exactly, I was hoping to put more of my ow
 
 ![](docs/palette.JPG)
 
-Link to [WIREFRAMES](docs/WF.md) file.
+Link to [WIREFRAMES.md](docs/WF.md) file.
 
 ## Features
 
@@ -73,7 +74,7 @@ A `Contact Us` app` was subsequently added so apologies as some screenshots may 
 
 Footer has link to a privacy policy & a mockup facebook business page.
 
-### Home
+### Home Page (All pages include header & footer described above)
 ![](docs/h-page.JPG)
 
 The home page has a large `SHOP NOW` button to intice the user to shop, There is hint of the next collection which is called Love-in-Star & a pic of the pendant from this collection.
@@ -117,36 +118,78 @@ This page gives the details of items currently in the bag.
 |:---: |:---:|:---:|
 |![](docs/b-geo.JPG)|![](docs/b-mount.JPG)|![](docs/b-ring.JPG)|
 
+So Removing the Pendant from the shopping bag and adjusting quantities this is contents of shopping bag we will checkout with by clicking on `SECURE CHECKOUT` button on right hand side at end of the page.
+
+![](docs/b-adjusted.JPG)
+
+### Checkout app
+
+User is presented with form to complete delivery details & a summary of the order, If user is logged in and has already chosen to save their delivery details the form will be prefilled.
+
+#### Registered Users : 
 
 
 
-Site has all the features of Boutique Ado with following additions/amendments
+Back to our guest order we can see that the order summary contains a count, and line item details including quantity, price & if relevant size and engraving text, subtotal and total.
+
+![](docs/co-ordersummary.JPG)
+
+Fill out the delivery details to complete the order
+
+![](docs/co-delivery.JPG)
+
+User will see  this overlay while stripe does its work
+
+![](docs/co-overlay.JPG)
+
+& then be presented with toast message & confirmation of order.
+
+![](docs/co-toast.JPG)
+![](docs/co-confirm.JPG)
+
+User also receives an email unfortunatley don't have screenshot for this order but here is one from an order earlier this month
+
+![](docs/email.JPG)
+
+The order has been added to the database (as seen by the admin user) & as CreatedByWebhook in Order is false I know that the order was created by `checkout.views.checkout` & not checkout.webhook_handler`.  This  aisll immaterial to the user but may be of benefit to the owner/administrator. Majority of orders should be created by checkout and not by webhook handler, If there is an increase in webhook order than it warrents investigation.
+
+![](docs/db-order.JPG)
+
+Engrave Text is saved in the OrderLineItem.
+
+![](docs/db-order-details.JPG)
+
+#### Stripe
+
+The currency is set to Euro in settings.py as all goods are for sale from Ireland.  Stripe requires all Euro amounts to be provided in cents, cents being the smallest Euro unit.  In keeping with the business strategy of whole number pricing,  it was necessary to round up `grand_total` & `stripe_total` using `math.ceil()` when including delivery costs.
+
+##### Stripe Secrets
+
+Use `<input type="hidden"..>` to pass the `client_secret` to stripe server, With the hidden attribute set the user cannot view or interact with the value being passed
+
+##### CreatedByWebhook : Redundancy for payment system on chekcout app
+
+There is redundancy build into the Checkout app during Stripe payment processing in cases where the user might close the browser or lose power/connectivity or do something on the client/frontend side that breaks connection with the server during payment processing (the js .done .then on 'stripe.confirmCardPayment') causing the order not to be submitted to the database even though the payment has been made. This is for edge cases only and is achieved by listening for particular stripe webhooks (wh's) which operate like signals in the background and are unaffected by whats going on front end. It is the same implementation as **BoutiqueAdo**. The Stripe account is configured to send wh's to an endpoint such as `https://memorylane-jewellery-63c74e421293.herokuapp.com/checkout/wh/`. A `payment_intent.succeeded` webhook is send by Stripe to signify that the payment has been completed.  Therefore if/when that particular wh is received we know for definite that payment has been made & in normal cases the order will already have been created by `views.checkout` (abeit a slight delay in writing to db using false commit on the save `order_form.save(commit=False)`).  However in an edge case where something happens frontend so that order never gets created in the db, the `payment_intent.succeeded` wh handler will create the order if it finds that it does not exist in the db.  There is a boolean field on the Order model called `CreatedByWebhook` to track such cases.  The site administrator can check for this phenomena using filter on the django admin interface.
+
+### Contact Us
+
+
+#### Aside
+Site has most features of Boutique Ado with following additions/amendments
 
 - Navigation Dropdowns : Browse, For Her, Design, Specials
 - custom helper functions in bag_tools & checkout_tools
 - no decimal places in Product model
-- Product model has 2 boolean fields - sizeable & engrave.
-- Product model also have Collection field
-- Order model has boolean subscribe_newsletter
-- OrderLineTiem has engrave_text - holds the customers engraving request
 - Items in bag/order/messages  etc are presented  as follows
     ![Bag](docs/bag-sizes.jpg)
 
-
-
-#### Checkout
-
-##### Stripe currency & Pricing
-
-The currency is set to Euro in settings.py as all goods are for sale from Ireland.  Stripe requires all Euro amounts to be provided in cents, cents being the smallest Euro unit.  In keeping with the business strategy of whole number pricing,  it was necessary to round up `grand_total` & `stripe_total` using `math.ceil()` when including delivery costs.
-
-#### Stripe Secrets
-
-Use `<input type="hidden"..>` to pass the `client_secret` to stripe server, With the hidden attribute set the user cannot view or interact with the value being passed
-
-##### Redundancy for payment system on chekcout app
-
-There is redundancy build into the Checkout app during Stripe payment processing in cases where the user might close the browser or lose power/connectivity or do something on the client/frontend side that breaks connection with the server during payment processing (the js .done .then on 'stripe.confirmCardPayment') causing the order not to be submitted to the database even though the payment has been made. This is for edge cases only and is achieved by listening for particular stripe webhooks (wh's) which operate like signals in the background and are unaffected by whats going on front end. It is the same implementation as **BoutiqueAdo**. The Stripe account is configured to send wh's to an endpoint such as `https://memorylane-jewellery-63c74e421293.herokuapp.com/checkout/wh/`. A `payment_intent.succeeded` webhook is send by Stripe to signify that the payment has been completed.  Therefore if/when that particular wh is received we know for definite that payment has been made & in normal cases the order will already have been created by `views.checkout` (abeit a slight delay in writing to db using false commit on the save `order_form.save(commit=False)`).  However in an edge case where something happens frontend so that order never gets created in the db, the `payment_intent.succeeded` wh handler will create the order if it finds that it does not exist in the db.  There is a boolean field on the Order model called 'CreatedByWebhook` to track such cases.  The site administrator can check for this phenomena using filter on the django admin interface.
+#### Model Customising
+- Product class has 2 extra booleans `sizeable` & `engrave`
+- New Collection class in Products
+- Order has  boolean `CreatedByWebhook` 
+- UserProfile has boolean `subscribe_newsletter`
+- OrderLineItem has  CharField `engrave_text`
+- ContactUs app has new model `contactus`
 
 ## Testing
 

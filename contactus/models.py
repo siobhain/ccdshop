@@ -6,6 +6,7 @@ class ContactUs(models.Model):
 
     class Meta:
         verbose_name_plural = 'Contact-Us'
+        
     name = models.CharField(max_length=50)
     email = models.EmailField()
     subject = models.CharField(max_length=100)

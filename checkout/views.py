@@ -161,6 +161,8 @@ def checkout_success(request, order_number):
     """
     save_info = request.session.get('save_info')
     subscribe = request.session.get('subscribe')
+    print("Save info & Subscribe next Username")
+    print(save_info, subscribe, request.user)
     order = get_object_or_404(Order, order_number=order_number)
     thank_you = "Thank you."
 
@@ -185,7 +187,8 @@ def checkout_success(request, order_number):
             if user_profile_form.is_valid():
                 user_profile_form.save()
         if subscribe: 
-            profile.subscribe_newsletter = subscribe
+            profile.subscribe_newsletter = True
+            profile.save()
             thank_you = "Thank you for subscribing to quarterly newsletter"
         
     messages.success(request, f'Order successfully processed! \

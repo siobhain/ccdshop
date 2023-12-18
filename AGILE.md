@@ -19,3 +19,5 @@ Sprints are managed via milestones as follows
 Here is a ![sprint view](docs/p-sprintview.JPG)
 
 I created a Project Sprint view [here](https://github.com/users/siobhain/projects/11/views/8)
+
+Return to the [README.md](README.md) file.
