@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 
 from .models import UserProfile
 from .forms import UserProfileForm
@@ -54,3 +55,10 @@ def order_history(request, order_number):
     }
 
     return render(request, template, context)
+
+# Return list of email addresses for users who have subscribed to newsletter
+def subscribed_users_list(request):
+    subscribed_users = User.objects.filter(userprofile__subscribe_newsletter=True)
+    email_list = ', '.join([user.email for user in subscribed_users])
+    return render(request, 'profiles/subscribed_users_list.html', {'email_list': email_list})
+

@@ -8,4 +8,5 @@ urlpatterns = [
         views.order_history,
         name='order_history'
         ),
+    path('subscribed_users_list/', views.subscribed_users_list, name='subscribed_users_list'),
 ]

@@ -65,7 +65,7 @@ Currently the banner has a free delivery message, this may change depending on t
 |![](docs/d-browse.JPG)|![](docs/d-forher.JPG)|![](docs/d-design.JPG)|![](docs/d-specials.JPG)|
 
 Update : 
-A `Contact Us` app` was subsequently added so apologies as some screenshots may be out of date & missing the menu item.
+A `Contact Us` app` was subsequently added so apologies as some screenshots may be out of date & missing this menu item.
 
 ![](docs/d-contactus.JPG)
 
@@ -171,7 +171,21 @@ Use `<input type="hidden"..>` to pass the `client_secret` to stripe server, With
 
 There is redundancy build into the Checkout app during Stripe payment processing in cases where the user might close the browser or lose power/connectivity or do something on the client/frontend side that breaks connection with the server during payment processing (the js .done .then on 'stripe.confirmCardPayment') causing the order not to be submitted to the database even though the payment has been made. This is for edge cases only and is achieved by listening for particular stripe webhooks (wh's) which operate like signals in the background and are unaffected by whats going on front end. It is the same implementation as **BoutiqueAdo**. The Stripe account is configured to send wh's to an endpoint such as `https://memorylane-jewellery-63c74e421293.herokuapp.com/checkout/wh/`. A `payment_intent.succeeded` webhook is send by Stripe to signify that the payment has been completed.  Therefore if/when that particular wh is received we know for definite that payment has been made & in normal cases the order will already have been created by `views.checkout` (abeit a slight delay in writing to db using false commit on the save `order_form.save(commit=False)`).  However in an edge case where something happens frontend so that order never gets created in the db, the `payment_intent.succeeded` wh handler will create the order if it finds that it does not exist in the db.  There is a boolean field on the Order model called `CreatedByWebhook` to track such cases.  The site administrator can check for this phenomena using filter on the django admin interface.
 
-### Contact Us
+### Contact Us App
+
+ContactUs is a standalone app whereby users can submit requests or feedback to site owner.
+
+|ContactUs page|ContactUs Form completed| ContactUs Confirmation|
+|:---: |:---:|:---:|
+|![](docs/cus-form.JPG)|![](docs/cus-formfilled.JPG)|![](docs/cus-formconfirm.JPG)|
+
+& request saved as ContactUs instance on the database
+
+|Description|Screenshot|
+|:---: |:---:|
+|Summary|![](docs/db-cus.JPG)|
+|Detail|![](docs/db-cus2.JPG)|
+
 
 
 #### Aside
