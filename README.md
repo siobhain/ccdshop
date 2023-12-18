@@ -89,7 +89,7 @@ The `SHOP NOW` button leads the the all products page, currently 12 in the datab
 | :---: |:---:|:---:|
 |![](docs/p-laptop.JPG)|![](docs/p-tablet.JPG)|![](docs/p-mobile.JPG)|
 
-Each product has an image, a name and the following details : Category, Price, Rating (see below).  Once the user clicks on an image the product detail page will be loaded.
+Each product has an image, a name and the following details : Category, Price, Rating (see below) & optional attrributes are Size & Engrave.  Once the user clicks on an image the product detail page will be loaded.
 
 ![](docs/p-ballearrings.JPG)
 
@@ -173,7 +173,7 @@ There is redundancy build into the Checkout app during Stripe payment processing
 
 ### Contact Us App
 
-ContactUs is a standalone app whereby users can submit requests or feedback to site owner.
+ContactUs is a ***standalone*** app whereby users can submit requests or feedback to site owner.
 
 |ContactUs page|ContactUs Form completed| ContactUs Confirmation|
 |:---: |:---:|:---:|
