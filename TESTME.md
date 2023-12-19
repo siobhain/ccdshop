@@ -19,10 +19,15 @@ Both development and deployed versions of the project were tested on multiple de
 
 ![Responsiveness](docs/amires.JPG)
 
-## BROWSER COMPABILITY TESTING
+The navigation items collapse at width of 892 pixels to a bootstrap burger menu, dropping 2 of the menu items namely `FOR HER & DESIGN` & adding a `Home` link since the logo and title are no longer rendered.
 
- 
- 
+---
+|At 893 Pixels|Collapse at 892 pixels|
+|:---:|:---:|
+|![](docs/r-893.JPG)|![](docs/r-892.JPG)|
+
+
+## BROWSER COMPABILITY TESTING
 
 The deployed project was tested on 3 browsers to check for compatibility issues and works as expected.
 
@@ -122,49 +127,53 @@ The [Code Institute Python Linter](https://pep8ci.herokuapp.com) was used to val
 ### Common header & footer to all pages 
 
  Navigation Links & Menu Items
-TEST            | OUTCOME                          | PASS / FAIL  
+TEST            | Clicking EXPECTATION or OUTCOME                          | Result  
 --------------- | -------------------------------- | ---------------
-Home page | Clicking " Memory Lane Jewellery" in the navigation bar redirects to the home page. | PASS
-All products page | When clicking the "Full Range" in the dropdown menus, the category shows a dropdown list so I have access to more sort/filter options. The page heading indicates the users location on the site. | PASS
-Register page | Clicking the "register" link in the navigation bar redirects to the register page. The page heading indicates the users location on the site. | PASS
+Home page | - Click "Memory Lane Jewellery" in the navigation bar redirects to the home page. -  | PASS
+All products page | Click "Full Range" in any of `BROWSE` `FOR HER` `DESIGN`dropdown menus renders all porducts, 2) category shows a dropdown list so I have access to more sort/filter options. The page title indicates the users location on the site. | PASS
+Register page | Click "register" link in the navigation bar redirects to the register page. The page heading indicates the users location on the site. | PASS
 Login / Logout page | Clicking the "login" or "logout links in the navigation bar redirects to the login or logout page. | PASS
-Bag page | When clicking the "basket" icon in the navigation bar, the browser redirects me to the bag page. The page heading indicates the users location on the site. | PASS
+Bag page | Click the "basket" icon in the navigation bar, pulls up the bag page | PASS
 My Profile page | When clicking the "My profile" link in the navigation bar, the browser redirects to the profile page. The page heading is "MLJ AUTH" indicates the users location on the site. | PASS
 Product management page | When clicking the "Add New Product" menu item as an admin user, the browser redirects to the product management page. The page heading is "MLJ ADD. | PASS
-Search bar | When searching for a keyword, the results will show products that contain the keyword in the product name or description. The page HEader is "MLJ SHOP" | PASS
+Search bar | When searching for a keyword, the results will show products that contain the keyword in the product name or description.  | PASS
 
 ### Footer
 
-TEST            | DETAILS                          | PASS / FAIL  
+TEST            | DETAILS                          | Result  
 --------------- | -------------------------------- | ---------------
 Facebook | Clicking the Facebook icon opens a new tab which displays Mockup of MLJ's facebook page. | PASS
+Privacy Policy | Loads privacy policy page | PASS
 
 ### Home page
-TEST            | Details                          | PASS / FAIL  
+TEST            | Details                          | Result  
 --------------- | -------------------------------- | ---------------
+shop now | loads all products for user to browse | pass
 
+### Products page 
 
-### Products page (from `Shop now` or `Continue Shopping` or `Keep Shopping` buttons)
-TEST            | DETAILS                          | PASS / FAIL  
+This page is reached from `Shop now` or `Continue Shopping` or `Keep Shopping` buttons.  Also some or all products in the database are displayed on screen when any of the options in nav menus BROWSE, FOR HER, DESIGN, SPECIALS are clicked. 
+
+TEST            | DETAILS                          | Result  
 --------------- | -------------------------------- | ---------------
 Product images | All images displaying correctly  | PASS
-Responsiveness | Check every element on the page for consistent scalability in mobile, tablet and desktop view.| PASS
+Responsiveness | Check every element on the page for consistent scalability in mobile, tablet and desktop view.| 80% pass - some misalignment in product name as outline in bug section 
 Sort | Check sort in both directions by **Price, Rating, Name & Category** to ensure each option reloads the page and sorts the products in the corresponding order sleected. | PASS
 Edit Button (Admin only) | Check the edit button is only displayed when admin user is logged in, Check that when clicked it loads the product management page in order to edit the corresponding product | PASS
 Delete Button (Admin only) | Check the delete button is only displayed when admin user is logged in, Check that when clicked the corresponding product is deleted from the db & a success message that the product has been deleted is displayed | PASS
 
 ### Product details page
-TEST            | DETAILS                          | PASS / FAIL  
+TEST            | DETAILS                          | Result  
 --------------- | -------------------------------- | ---------------
-Image | There is one image per product, Ensure the image is displayed correctly on all screen sizes, on clicking the image a larger version is displayed on another tab | PASS
-Details | Confirm correct Name, Price, Category, Rating & Quantity (default 1), & if relevant Size dropdown (default M) & Add Engrave checkbox, Confirm button hover : Continue Shopping  & Add to bag  work as expected | PASS
-Quantity Selector | Check the quantity selector functionality by selecting minus and plus buttons  | PASS
+Image | There is one image per product, Ensure the image is displayed correctly on all screen sizes, on clicking the image a larger version is displayed on another tab | Pass 
+Details | Confirm correct Name, Price, Category, Rating & Quantity (default 1), & if relevant Size dropdown (default M) & Add Engrave checkbox, Confirm button hover : Continue Shopping  & Add to bag  work as expected | PASS 
+Quantity Selector | Check the quantity selector functionality by selecting minus and plus buttons & Ensure can only use 1 to 5 | PASS
 Add to Bag | Confirm Product, Size, Quantity & Engraving details are added correctly to bag | PASS
-Edit Button (Admin only) | Check the edit button is only displayed when admin user is logged in, Check that when clicked it loads the product management page in order to edit the corresponding product | PASS
-Delete Button (Admin only) | Check the delete button is only displayed when admin user is logged in, Check that when clicked the corresponding product is deleted from the db & a success message that the product has been deleted is displayed | PASS
+Edit Button (admin only) | Check the edit button is only displayed when admin user is logged in, Check that when clicked it loads the product management page in order to edit the corresponding product | PASS
+Delete Button (admin only) | Check the delete button is only displayed when admin user is logged in, Check that when clicked the corresponding product is deleted from the db & a success message that the product has been deleted is displayed | PASS
 
 ### Shopping Bag page
-TEST            | DETAILS                          | PASS / FAIL  
+TEST            | DETAILS                          | Result  
 --------------- | -------------------------------- | ---------------
 Items in bag | CONFIRM  - the correct number of items in the bag & that the details (Quantity, Size, Engrave Text, Subtotal) of each line is correct| PASS
 Remove item from cart | Clicking the remove link on an item removes the item from the cart. | PASS
@@ -172,29 +181,40 @@ Quantity Selector | Check the quantity selector functionality by selecting min a
 Free delivery threshold | Adding products to the cart where the grand total value is under €100, the cart shows the free delivery warning message. The message disappears when the grand total is over €100. | PASS
 
 ### Checkout page
-TEST            | OUTCOME                          | PASS / FAIL  
+TEST            | EXPECTATION or OUTCOME                          | RESULT
 --------------- | -------------------------------- | ---------------
-Media | All media assets are displayed properly, have no pixelation or stretched images and are responsive on all devices. | PASS
-Responsiveness | Check every element on the page for consistent scalability in mobile, tablet and desktop view.| PASS
-Checkout form | Filling in the form with the correct validation processes the order. | PASS
-Checkout form | Filling in the form with the incorrect validation shows errors messages. | PASS
-Save details checkout | Selecting the "Save this delivery information to my profile" checkbox, this saves/updates my profile details. | PASS
-Card authentication | Used the Stripe test card details and purposely failed authenticated to check for error messages. | PASS
+Order details | verify correct items & values in order | Pass
+Save delivery info| Verify delivery details updated | Pass
+Do not save delivery Info | Verify delivery not updated | pass
+Subscribe to newsletter | Verify UserProfile updated correctly | Pass
+Do not subscribe to newsletter |Verify UserProfile updated correctly | Pass
+Invalid address/ zip code details  | Filling in the form with the incorrect details gives errors messages. | PASS
+Card stolen/ Insufficient Funds | Used various stripe test card to check for particular messages. | PASS
 
 ### Checkout success page
-TEST            | OUTCOME                          | PASS / FAIL  
+TEST            | EXPECTATION or OUTCOME                          | Result  
 --------------- | -------------------------------- | ---------------
-Responsiveness | Check every element on the page for consistent scalability in mobile, tablet and desktop view.| PASS
-Order history | When clicking on an order number in the order history section, this takes me to a past order confirmation summary page. | PASS
-Updating my profile | When updating the default delivery information, this reflects on the checkout page. | PASS
+Order on page | Verify correct details on page, Verify correct, Verify if delivery was saved or not ans same with newsletter subscription | PASS
+Order on DB | Verify correct details on DB | PASS
 
 ### Contact us page
-
-### Product management page
-TEST            | OUTCOME                          | PASS / FAIL  
+TEST            | EXPECTATION or OUTCOME       | Result
 --------------- | -------------------------------- | ---------------
-Responsiveness | Check every element on the page for consistent scalability in mobile, tablet and desktop view.| PASS
-Adding a product | When filling out the form to add a new product, the product is added to the relevant category and is searchable via the search bar. | PASS
+Submit wedding request| User received confirmation of receipt, admin confirms request in DB with correct details & wedding box clicked | Pass
+Submit non wedding request| User received confirmation of receipt, admin confirms request in DB with wedding = false | Pass
+Invalid email | user notified | Pass
+
+
+### Product management / superuser tasks
+TEST            | EXPECTATION or OUTCOME                          | Result  
+--------------- | -------------------------------- | ---------------
+Add new product | Expect toast message, verify Product added to database, ensure Product searchable, Product Details page with correct details as in image, name, category, price, sizeable, engrave etc | PASS
+Edit Product | Expect toast message that Product added to database, ensure Product searchable, Product Details page with correct details as in image, name, category, price, sizeable, engrave etc | pass
+Delete Product | confirm product no longer searchable | Pass for Development DB but Not yet tested on production DB
+View Subscribe List | Verify emails on list are all users with subscribe_newsletter=True on DB | Pass
+
+
+
 Uploading an image | When uploading an image to a new product, the site shows the name of the file that will be uploaded. When checking the product details page, the image also shows. | PASS
  
 

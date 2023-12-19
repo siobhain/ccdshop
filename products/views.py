@@ -40,8 +40,6 @@ def all_products(request):
         if 'category' in request.GET:
             categories = request.GET['category'].split(',')
             products = products.filter(category__name__in=categories)
-            print("the category, the products return by filter")
-            print(categories, products)
  
         if 'collection' in request.GET:
             collections = request.GET['collection']
@@ -67,8 +65,6 @@ def all_products(request):
             queries = Q(name__icontains=query) | Q(
                 description__icontains=query)
             products = products.filter(queries)
-            print("the Q query, The Q object =queries, the products returned after Q object")
-            print(query, queries, products)
 
     current_sorting = f'{sort}_{direction}'
 

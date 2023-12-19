@@ -2,7 +2,7 @@
 
 # ![MLJ logo](static/favicon-32x32.png) Memory Lane Jewellery
 
-- You can view the live site here (https://memorylane-jewellery-63c74e421293.herokuapp.com/)
+- You can view the live site [here](https://memorylane-jewellery-63c74e421293.herokuapp.com/)
 
 
 ### About 
@@ -41,17 +41,18 @@ Hover on `SPECIALS` above
 
 Footer ![](docs/f-commonfooter.JPG)
 
-#### Header Menu & Icons 
+#### Header Navigation Menu & Icons on Large screens
 
 ##### Memory Lane Jewellery 
-If any part of Memory Lane Jewellery or the favicon in the header is clicked it will return user to the home page.
+If any part of Memory Lane Jewellery or the favicon in the header is clicked it will return user to the home page.  It is a long title and so gets 7 of the 12 column grid on the header row - so no wrapping before hamburger menu for smaller screens.
 
 ##### Search
-Search is implemeted same as Boutique Ado.
+Search is implemeted same as Boutique Ado, It gets 2 columns of the grid leaving 3 cols for the next section holding `My Account & the basket.  This redispersal of columns in the header row is made late in the day so some screen shots that include the header row may be from when all 3 sections had 4 columns each.
 
 ##### My Account
+---
 |No User logged in|Admin logged in|User logged in|
-| :---: |:---:|:---:|
+|:---:|:---:|:---:|
 |![](docs/d-myaccount.JPG)|![](docs/d-admin.JPG)|![](docs/d-mols.JPG)|
 |Option to `Register` as new user or `Login`|Extra Options to `Add product` & `View Subscribe list`|Option to view Profile incl order history|
 
@@ -64,11 +65,11 @@ The Basket icon when clicked goes to Shopping Bag page
 |![](docs/d-browse.JPG)|![](docs/d-forher.JPG)|![](docs/d-design.JPG)|![](docs/d-specials.JPG)|
 
 Update : 
-A `Contact Us` app` was subsequently added so apologies as some screenshots may be out of date & missing this menu item.
+A `Contact Us` app` was subsequently added so apologies if some screenshots are out of sync & missing this menu item & indeed the 'Search' in this screenshot is centerstage whereas it was since moced more to the right so title wouls not wrap.
 
 ![](docs/d-contactus.JPG)
 
-###### FOR HER
+###### FOR HER (On large screens only)
 The dropdown menus are fairly self explanatory, The 1st `Browse` menu item is a sorting for all products, The following is what is rendered on the `FOR HER` menu
 
 |Earrings|Pendants|
@@ -79,7 +80,7 @@ The dropdown menus are fairly self explanatory, The 1st `Browse` menu item is a 
 |:---: |:---:|
 |![](docs/fh-brac.JPG)|![](docs/fh-ring.JPG)|
 
-###### DESIGN
+###### DESIGN (on large screens only)
 This is listing product by Platinium,  Gold, Silver or a mix of both Gold & Silver, implemented with the `Collection` model.
 
 ###### SPECIALS
@@ -91,17 +92,22 @@ This is listing product by Platinium,  Gold, Silver or a mix of both Gold & Silv
 
 
 ##### Banner
-Currently the banner has a free delivery message, this may change depending on time of year.
+Currently the banner has a free delivery message, this may change depending on time of year. For Christmas this year there will be free engraving service & this promotion needs to go on the banner.
 
 
 #####  The Footer
+Footer has link to a privacy policy & a mockup facebook business page.
+
 ![](docs/f-commonfooter.JPG)
 
-Footer has link to a privacy policy & a mockup facebook business page.
+At width of 611 pixels the title is truncated to initals & this is the resulting footer 
+
+![](docs/r-footer.JPG)
+
 
 ### Home Page 
 
-All pages include common header & footer described above, This is a visual of the home page wihtout common header/footer.
+All pages include common header & footer described above, This is a visual of the home page without common header/footer.
 
 ![](docs/h-page.JPG)
 
@@ -175,7 +181,7 @@ User will see  this overlay while stripe does its work
 ![](docs/co-toast.JPG)
 ![](docs/co-confirm.JPG)
 
-User also receives an email unfortunatley don't have screenshot for this order but here is one from an order earlier this month
+User also receives an email unfortunatley don't have screenshot for this particular order but here is one from an order earlier this month
 
 ![](docs/email.JPG)
 
@@ -195,7 +201,16 @@ The currency is set to Euro in settings.py as all goods are for sale from Irelan
 
 Use `<input type="hidden"..>` to pass the `client_secret` to stripe server, With the hidden attribute set the user cannot view or interact with the value being passed
 
-##### CreatedByWebhook : Redundancy for payment system on chekcout app
+##### Strips Credit cards for development
+To sucessful payment the `42424242424...` was used and Strip make other card numbers availabe for testing payment declines
+
+|Declined|NoFunds|
+|:--- |:---:|
+|![](docs/stripe-declined.JPG)|![](docs/stripe-nofunds.JPG)|
+
+
+
+##### CreatedByWebhook : Redundancy for payment system on checkout app
 
 There is redundancy build into the Checkout app during Stripe payment processing in cases where the user might close the browser or lose power/connectivity or do something on the client/frontend side that breaks connection with the server during payment processing (the js .done .then on 'stripe.confirmCardPayment') causing the order not to be submitted to the database even though the payment has been made. This is for edge cases only and is achieved by listening for particular stripe webhooks (wh's) which operate like signals in the background and are unaffected by whats going on front end. It is the same implementation as **BoutiqueAdo**. The Stripe account is configured to send wh's to an endpoint such as `https://memorylane-jewellery-63c74e421293.herokuapp.com/checkout/wh/`. A `payment_intent.succeeded` webhook is send by Stripe to signify that the payment has been completed.  Therefore if/when that particular wh is received we know for definite that payment has been made & in normal cases the order will already have been created by `views.checkout` (abeit a slight delay in writing to db using false commit on the save `order_form.save(commit=False)`).  However in an edge case where something happens frontend so that order never gets created in the db, the `payment_intent.succeeded` wh handler will create the order if it finds that it does not exist in the db.  There is a boolean field on the Order model called `CreatedByWebhook` to track such cases.  The site administrator can check for this phenomena using filter on the django admin interface.
 

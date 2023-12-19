@@ -24,8 +24,6 @@ def add_to_bag(request, item_id):
     size = None
     engrave_text = ""
     engrave_message = ""
-    print("POST in")
-    print(request.POST)
     if 'product_size' in request.POST:
         size = request.POST['product_size']
     if 'engrave_text' in request.POST and 'engrave_checkbox' in request.POST:
@@ -72,7 +70,6 @@ def add_to_bag(request, item_id):
             messages.success(request, f'Added {product.name} to your bag')
 
     request.session['bag'] = bag
-    print(bag)
     return redirect(redirect_url)
 
 
@@ -84,9 +81,6 @@ def adjust_bag(request, item_id):
     size = None
     if 'product_size' in request.POST:
         size = request.POST['product_size']
-        print(request.POST)
-        print("product_size from POST is")
-        print(size)
         if "_" in size:
             engrave_split = size.split('_')
             size_only = engrave_split[0]

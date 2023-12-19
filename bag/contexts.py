@@ -13,8 +13,6 @@ def bag_contents(request):
     product_count = 0
 
     bag = request.session.get('bag', {})
-    print("SESSION BAG in context contents - so this is what bag contains ")
-    print(bag)
     for item_id, item_data in bag.items():
         if isinstance(item_data, int):
             product = get_object_or_404(Product, pk=item_id)
@@ -63,9 +61,5 @@ def bag_contents(request):
         'free_delivery_threshold': settings.FREE_DELIVERY_THRESHOLD,
         'grand_total': grand_total,
     }
-    print("bag_items - a list of dictionaries")
-    print(bag_items)
-    print("item by line")
-    for item in context['bag_items']:
-        print(item)
+    
     return context

@@ -161,8 +161,6 @@ def checkout_success(request, order_number):
     """
     save_info = request.session.get('save_info')
     subscribe = request.session.get('subscribe')
-    print("Save info & Subscribe next Username")
-    print(save_info, subscribe, request.user)
     order = get_object_or_404(Order, order_number=order_number)
     thank_you = "Thank you."
 
