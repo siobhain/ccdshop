@@ -1,30 +1,85 @@
-![Am I responsive](docs/amires.JPG)
+B2C![Am I responsive](docs/amires.JPG)
 
 # ![MLJ logo](static/favicon-32x32.png) Memory Lane Jewellery
 
 - You can view the live site [here](https://memorylane-jewellery-63c74e421293.herokuapp.com/)
 
+<!-- TOC -->
 
-### About 
+- [!MLJ logo Memory Lane Jewellery](#mlj-logo-memory-lane-jewellery)
+    - [About](#about)
+    - [Owners Stipulations](#owners-stipulations)
+        - [Product Pricing & Quantity limits.](#product-pricing--quantity-limits)
+        - [Newsletter](#newsletter)
+        - [Wedding Rings](#wedding-rings)
+    - [B2C](#b2c)
+    - [Agile](#agile)
+    - [UX](#ux)
+    - [Features](#features)
+        - [Common Header & Footer](#common-header--footer)
+            - [Header Navigation Menu & Icons on Large screens](#header-navigation-menu--icons-on-large-screens)
+                - [Memory Lane Jewellery](#memory-lane-jewellery)
+                - [Search](#search)
+                - [My Account](#my-account)
+                - [Basket](#basket)
+                - [Dropdown Menus](#dropdown-menus)
+                    - [FOR HER On large screens only](#for-her-on-large-screens-only)
+                    - [DESIGN on large screens only](#design-on-large-screens-only)
+                    - [SPECIALS](#specials)
+                - [Banner](#banner)
+                - [The Footer](#the-footer)
+        - [Home Page](#home-page)
+        - [SHOP NOW Products App](#shop-now-products-app)
+        - [Product Detail page](#product-detail-page)
+        - [Bag app](#bag-app)
+        - [Checkout app](#checkout-app)
+            - [Registered Users :](#registered-users-)
+            - [Stripe](#stripe)
+                - [Stripe Secrets](#stripe-secrets)
+                - [Strips Credit cards for development](#strips-credit-cards-for-development)
+                - [CreatedByWebhook : Redundancy for payment system on checkout app](#createdbywebhook--redundancy-for-payment-system-on-checkout-app)
+            - [Step by Step Demonstration](#step-by-step-demonstration)
+        - [Contact Us App](#contact-us-app)
+        - [Superuser / admin Features](#superuser--admin-features)
+            - [Add a new Product to the database](#add-a-new-product-to-the-database)
+        - [Notes](#notes)
+            - [Model Customising](#model-customising)
+    - [Testing](#testing)
+    - [Search Engine Optimization - SEO](#search-engine-optimization---seo)
+        - [Meta Descriptions](#meta-descriptions)
+        - [Sitemap File](#sitemap-file)
+        - [Robots File](#robots-file)
+    - [Deploy](#deploy)
+    - [Credits](#credits)
+
+<!-- /TOC -->
+
+## About 
 
 Memory Lane Jewellery is a fictional online jewellery store selling handmade jewellery.  All pieces are designed and carefully crafted by master goldsmith Julia Diamond. She has created a range of jewellery that can be of sentimental & nostalgic value to whomever wears it.  Each is designed to help create precious memories,  mark milestones & is made from highest quality precious metals to be enjoyed over a lifetime & cherish into the future 
 
-#### Owners Stipulation about Product Pricing & Quantity limits.
+## Owners Stipulations 
+
+### Product Pricing & Quantity limits.
 The owner Julia has specified that it is a strategic business decision to opt for whole number pricing in order to maintain the feeling of exclusivity and quality in the goods.  It is thought the discerening customer would not fall for the charm pricing of say €49.99.as a family heirloom. Therefore there are to be no decimal points rendered on the website.
 
 In addition Julia the owner has requested that the quantity ordered be limited to a maximium of 5 as these pieces are all handmade and not mass produced.  At times it may be necessary for her to make to order which may result in delays, in those cases she will contact the customer directly herself.
 
+### Newsletter
 Owner does not envisage regular newsletters but perhpas quarterly end of line/offers made exclusively to cusomters - as stock is limited - that have registered for account. Therefore owner will not need mailchimp, A simple `subscribe_newsletter` boolean field in the UserProfile model will suffice, When true user will get newsletter otherwise not & Users are presented with choice during checkout process if they would like to signup for newsletter or not.
 
-### B2C
+### Wedding Rings
+Owner just getting into making wedding bands & so just testing the waters with 2 products but this new category is not in the main menus as of yet.
+
+## B2C
 
 This is a business to customer application.  There are several products and a single payment per order. Customers can purchase anonymously or can register for an account in which case they can safe their delivery information &/or subscribe to a quarterly newsletter.  Payment is via Stripe & banking details are not held or saved.
 
-### Agile
+## Agile
 
 Link to [AGILE.md](AGILE.md) file.
 
-### UX
+## UX
 
 The UX of Boutique is followed almost exactly, I was hoping to put more of my own stamp on it after getting MVP working etc but time not on my side.
 
@@ -210,7 +265,7 @@ To sucessful payment the `42424242424...` was used and Strip make other card num
 
 There is redundancy build into the Checkout app during Stripe payment processing in cases where the user might close the browser or lose power/connectivity or do something on the client/frontend side that breaks connection with the server during payment processing (the js .done .then on 'stripe.confirmCardPayment') causing the order not to be submitted to the database even though the payment has been made. This is for edge cases only and is achieved by listening for particular stripe webhooks (wh's) which operate like signals in the background and are unaffected by whats going on front end. It is the same implementation as **BoutiqueAdo**. The Stripe account is configured to send wh's to an endpoint such as `https://memorylane-jewellery-63c74e421293.herokuapp.com/checkout/wh/`. A `payment_intent.succeeded` webhook is send by Stripe to signify that the payment has been completed.  Therefore if/when that particular wh is received we know for definite that payment has been made & in normal cases the order will already have been created by `views.checkout` (abeit a slight delay in writing to db using false commit on the save `order_form.save(commit=False)`).  However in an edge case where something happens frontend so that order never gets created in the db, the `payment_intent.succeeded` wh handler will create the order if it finds that it does not exist in the db.  There is a boolean field on the Order model called `CreatedByWebhook` to track such cases.  The site administrator can check for this phenomena using filter on the django admin interface.
 
-Step by Step Demonstration 
+#### Step by Step Demonstration 
 
 This is a demo of ordering same product with different engraving/sizes & I will show from Product Details page via Shopping Bag to Order Confirmed.
 
@@ -275,7 +330,7 @@ This new product is then visible on the database & on website
 |Shop Latest Designs (When "New" in Product description) |![](docs/new-goldisc.JPG)|
 |Product Details Page |![](docs/new-detail.JPG)|
 
-#### Aside
+### Notes
 Site has most features of Boutique Ado with following additions/amendments
 
 - Navigation Dropdowns : Browse, For Her, Design, Specials
@@ -367,10 +422,23 @@ To deploy project on Heroku
 Select Manual deploy and choose the main branch, Click Deploy & watch build logs to ensure deployed ok
 
 
-### Credits
+## Credits
 
 Code Institutes Boutique Ado
 
 Contactus Page based on [https://github.com/kryspinm97/PP5-EliteTechPC]
 
 Images from https://www.cooksongold.com/
+
+
+from (https://www.w3schools.com/bootstrap5/bootstrap_tooltip)
+
+[Sprint planning](https://codetree.com/guides/sprint-planning-github-issues)
+
+[Revert Django Migrations](https://awstip.com/a-guide-to-reverting-migrations-in-django-c091bef62d34) 
+
+[Django FKey on_delete options](https://medium.com/@inem.patrick/django-database-integrity-foreignkey-on-delete-option-db7d160762e4)
+
+[Django Search Field Error](https://bugshare.io/exceptions/15/field-error-related-field-got-invalid-lookup-icontains)
+
+[Custom Signup Form](https://stackoverflow.com/questions/70809519/how-do-i-customize-django-allauth-sign-up-forms-to-look-the-way-i-wan
