@@ -101,10 +101,7 @@ Below are Lighthouse reports for the deployed project - lower scores than I woul
 
 The [JShint Validator](https://jshint.com/) was used to validate the JavaScript snippets.
 
-- - - 
-
 ### PYTHON
-
 
 The [Code Institute Python Linter](https://pep8ci.herokuapp.com) was used to validate Python files.
 
@@ -114,13 +111,16 @@ As of a week before submitting bag, products, home & profiles apps were cleared 
 
  I did not break these 2 E501 lines in webhook handler as = 80 characters and for readibility I left it alone.  WRT the F841 on webhooks - the "e" variable is used as far as I can tell so I do not understand this complaint.  If time allows I hope to check again before submitting.
 
-The [Code Institute Python Linter](https://pep8ci.herokuapp.com) was used to validate Python files.
+Update :
+The [Code Institute Python Linter](https://pep8ci.herokuapp.com) was used to validate Python files early on but it has been several weeks now & many changes since & unfortunately have not had time to re validate.  I have again cleared Flake8 warnings on all but the checkout application.
 
+Flake8 Results
+![](docs/flake8output.JPG) 
 
-| File | Screenshot  | Notes|
-| --- | ------ |:---:|
-| settings.py |  ![Settings](docs/v-settings.jpg) | Pass |
-| urls.py (main) |  ![Urls](docs/v-purls.jpg) | Pass |
+For readability I have left lines 78 & 79 on webhookhandler.py.  Variable e is dealt with in previous section.  
+
+WRT settings.py, I do not understand enough about F401 to take action & all the rest E501's cannot be shortened.
+
 
 ## FEATURES TESTING
 
@@ -157,7 +157,7 @@ This page is reached from `Shop now` or `Continue Shopping` or `Keep Shopping` b
 TEST            | DETAILS                          | Result  
 --------------- | -------------------------------- | ---------------
 Product images | All images displaying correctly  | PASS
-Responsiveness | Check every element on the page for consistent scalability in mobile, tablet and desktop view.| 80% pass - some misalignment in product name as outline in bug section 
+Responsiveness | Check every element on the page for consistent scalability in mobile, tablet and desktop view.| 90% ok- some misalignment in product name as outline in bug section 
 Sort | Check sort in both directions by **Price, Rating, Name & Category** to ensure each option reloads the page and sorts the products in the corresponding order sleected. | PASS
 Edit Button (Admin only) | Check the edit button is only displayed when admin user is logged in, Check that when clicked it loads the product management page in order to edit the corresponding product | PASS
 Delete Button (Admin only) | Check the delete button is only displayed when admin user is logged in, Check that when clicked the corresponding product is deleted from the db & a success message that the product has been deleted is displayed | PASS
@@ -177,7 +177,7 @@ TEST            | DETAILS                          | Result
 --------------- | -------------------------------- | ---------------
 Items in bag | CONFIRM  - the correct number of items in the bag & that the details (Quantity, Size, Engrave Text, Subtotal) of each line is correct| PASS
 Remove item from cart | Clicking the remove link on an item removes the item from the cart. | PASS
-Quantity Selector | Check the quantity selector functionality by selecting min and plus buttons where applicable. Adding a product to the cart to confirm the correct quantity selected is correct. | DOCUMENTED BUG
+Quantity Selector | Check the quantity selector functionality by selecting min and plus buttons where applicable. Adding a product to the cart to confirm the correct quantity selected is correct. Try with many different combinations of product sizes quantities & engrave text | Although there is a DOCUMENTED BUG (intermittent and not reproducable) in this area I have not come across it during vigorous testing so I am inclined to set this to PASS
 Free delivery threshold | Adding products to the cart where the grand total value is under €100, the cart shows the free delivery warning message. The message disappears when the grand total is over €100. | PASS
 
 ### Checkout page
@@ -212,11 +212,5 @@ Add new product | Expect toast message, verify Product added to database, ensure
 Edit Product | Expect toast message that Product added to database, ensure Product searchable, Product Details page with correct details as in image, name, category, price, sizeable, engrave etc | pass
 Delete Product | confirm product no longer searchable | Pass for Development DB but Not yet tested on production DB
 View Subscribe List | Verify emails on list are all users with subscribe_newsletter=True on DB | Pass
-
-
-
-Uploading an image | When uploading an image to a new product, the site shows the name of the file that will be uploaded. When checking the product details page, the image also shows. | PASS
- 
-
 
 Return back to the [README.md](README.md) file.

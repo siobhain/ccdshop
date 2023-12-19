@@ -42,7 +42,6 @@ def order_history(request, order_number):
     order_date = order.date
     ddmmmyy = order_date.strftime("%d %b %Y")
 
-
     messages.warning(request, (
         f'This is a COPY of confirmation for order number {order_number}.',
         f'An email with these details was sent to you on the {ddmmmyy}'
@@ -56,9 +55,15 @@ def order_history(request, order_number):
 
     return render(request, template, context)
 
+
 # Return list of email addresses for users who have subscribed to newsletter
 def subscribed_users_list(request):
-    subscribed_users = User.objects.filter(userprofile__subscribe_newsletter=True)
+    subscribed_users = User.objects.filter(
+        userprofile__subscribe_newsletter=True
+        )
     email_list = ', '.join([user.email for user in subscribed_users])
-    return render(request, 'profiles/subscribed_users_list.html', {'email_list': email_list})
-
+    return render(
+        request,
+        'profiles/subscribed_users_list.html',
+        {'email_list': email_list}
+        )

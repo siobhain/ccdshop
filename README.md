@@ -162,8 +162,6 @@ User is presented with form to complete delivery details & a summary of the orde
 
 #### Registered Users : 
 
-
-
 Back to our guest order we can see that the order summary contains a count, and line item details including quantity, price & if relevant size and engraving text, subtotal and total.
 
 ![](docs/co-ordersummary.JPG)
@@ -185,7 +183,7 @@ User also receives an email unfortunatley don't have screenshot for this particu
 
 ![](docs/email.JPG)
 
-The order has been added to the database (as seen by the admin user) & as CreatedByWebhook in Order is false I know that the order was created by `checkout.views.checkout` & not checkout.webhook_handler`.  This  aisll immaterial to the user but may be of benefit to the owner/administrator. Majority of orders should be created by checkout and not by webhook handler, If there is an increase in webhook order than it warrents investigation.
+The order has been added to the database (as seen by the admin user) & as CreatedByWebhook in Order is false I know that the order was created by `checkout.views.checkout` & not checkout.webhook_handler`.  This is all immaterial to the user but may be of benefit to the owner/administrator. Majority of orders should be created by checkout and not by webhook handler, If there is an increase in webhook order than it warrents investigation.
 
 ![](docs/db-order.JPG)
 
@@ -208,11 +206,30 @@ To sucessful payment the `42424242424...` was used and Strip make other card num
 |:--- |:---:|
 |![](docs/stripe-declined.JPG)|![](docs/stripe-nofunds.JPG)|
 
-
-
 ##### CreatedByWebhook : Redundancy for payment system on checkout app
 
 There is redundancy build into the Checkout app during Stripe payment processing in cases where the user might close the browser or lose power/connectivity or do something on the client/frontend side that breaks connection with the server during payment processing (the js .done .then on 'stripe.confirmCardPayment') causing the order not to be submitted to the database even though the payment has been made. This is for edge cases only and is achieved by listening for particular stripe webhooks (wh's) which operate like signals in the background and are unaffected by whats going on front end. It is the same implementation as **BoutiqueAdo**. The Stripe account is configured to send wh's to an endpoint such as `https://memorylane-jewellery-63c74e421293.herokuapp.com/checkout/wh/`. A `payment_intent.succeeded` webhook is send by Stripe to signify that the payment has been completed.  Therefore if/when that particular wh is received we know for definite that payment has been made & in normal cases the order will already have been created by `views.checkout` (abeit a slight delay in writing to db using false commit on the save `order_form.save(commit=False)`).  However in an edge case where something happens frontend so that order never gets created in the db, the `payment_intent.succeeded` wh handler will create the order if it finds that it does not exist in the db.  There is a boolean field on the Order model called `CreatedByWebhook` to track such cases.  The site administrator can check for this phenomena using filter on the django admin interface.
+
+Step by Step Demonstration 
+
+This is a demo of ordering same product with different engraving/sizes & I will show from Product Details page via Shopping Bag to Order Confirmed.
+
+|Step 1|Step 2| Step 3|
+|:---: |:---:|:---:|
+|![](docs/b-update1.JPG)|![](docs/b-update2.JPG)|![](docs/b-update3.JPG)|
+|1 X Silver bangle size XS with G engraved added to the bag| Now update the quantity to 3 from the bag, see toast message| Add same product bt this time Size XL with H engraving|
+
+
+|Step 4|Step 5| Step 6|
+|:---: |:---:|:---:|
+|![](docs/b-update4.JPG)|![](docs/b-update5.JPG)|![](docs/b-update6.JPG)|
+|Now bag has 2 rows, same product, 2 sizes, 2 differenct engravings| From the Shopping bag change the quantity with the + button up to 5 - nbotice the + can go no further it is now disabled by the handleEnableDisable js function, Total €1000!|Now add a 3rd line to the bag, Need to do it from Product detail page as using a NEW engraving this time the K engraving, size is XS same as 1st line and quantity =1 we won't go mad this time, Total = €1125|
+
+
+|Step 7|Step 8| Step 9|
+|:---: |:---:|:---:|
+|![](docs/b-update7.JPG)|![](docs/co-8.JPG)|![](docs/co-9.JPG)|
+|Back to the shoping bag & we've to tighten our belts, we're spending too much so instead of 5 we go back to just 1 of the XL size, Notice again greying of the "minus" button as handleEnableDisable js function kicks in Total €625 ah yes much more managable!!|Just a shot of the Checkout & I'm signing up for the newsletter, BTW this checkbox is NOT checked by default, opposite to the Save delivery info checkbox which is checked by default | Ah Confirmation of the order & Notice the toast message thanks for subscribing ...Happy days!|
 
 ### Contact Us App
 
@@ -257,16 +274,6 @@ This new product is then visible on the database & on website
 |Database Details |![](docs/db-newdetails.JPG)|
 |Shop Latest Designs (When "New" in Product description) |![](docs/new-goldisc.JPG)|
 |Product Details Page |![](docs/new-detail.JPG)|
-
-
-
-
-
-
-
-
-
-
 
 #### Aside
 Site has most features of Boutique Ado with following additions/amendments

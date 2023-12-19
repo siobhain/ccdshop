@@ -72,9 +72,11 @@ def checkout(request):
                         )
                         order_line_item.save()
                     else:
-                        for details, quantity in item_data['items_by_size'].items(
+                        for details, qty in item_data['items_by_size'].items(
                         ):
-                            if "_" in details: # unwrap size & engravetext from compound key (details) separated by _
+                            if "_" in details:
+                                # unwrap size & engravetext from compound key
+                                # (details) separated by _
                                 size_only = details.split('_')[0]
                                 engrave_text = details.split('_')[1]
                             else:
@@ -83,7 +85,7 @@ def checkout(request):
                             order_line_item = OrderLineItem(
                                 order=order,
                                 product=product,
-                                quantity=quantity,
+                                quantity=qty,
                                 product_size=size_only,
                                 engrave_text=engrave_text,
                             )
@@ -184,11 +186,11 @@ def checkout_success(request, order_number):
             user_profile_form = UserProfileForm(profile_data, instance=profile)
             if user_profile_form.is_valid():
                 user_profile_form.save()
-        if subscribe: 
+        if subscribe:
             profile.subscribe_newsletter = True
             profile.save()
             thank_you = "Thank you for subscribing to quarterly newsletter"
-        
+
     messages.success(request, f'Order successfully processed! \
         Your order number is {order_number}. A confirmation \
         email will be sent to {order.email}\r{thank_you}')

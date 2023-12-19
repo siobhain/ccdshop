@@ -28,7 +28,10 @@ else:
     DEBUG = False
 # DEBUG = False
 
-ALLOWED_HOSTS = ['memorylane-jewellery-63c74e421293.herokuapp.com', '8000-siobhain-ccdshop-0p289gfmil7.ws-eu107.gitpod.io']
+ALLOWED_HOSTS = [
+                'memorylane-jewellery-63c74e421293.herokuapp.com',
+                '8000-siobhain-ccdshop-0p289gfmil7.ws-eu107.gitpod.io'
+                ]
 
 # Application definition
 

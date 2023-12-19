@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q, F
 from django.db.models.functions import Lower
 
-from .models import Product, Category, Collection
+from .models import Product, Collection
 from .forms import ProductForm
 
 
@@ -40,17 +40,19 @@ def all_products(request):
         if 'category' in request.GET:
             categories = request.GET['category'].split(',')
             products = products.filter(category__name__in=categories)
- 
+
         if 'collection' in request.GET:
             collections = request.GET['collection']
             products = products.filter(collection__name__icontains=collections)
-            collections = Collection.objects.filter(name__icontains=collections)    
+            collections = Collection.objects.filter(
+                name__icontains=collections)
 
         """
         Specials Dropdown Handler :
         Based on the text of Product Description field
         New Designs -> New products have string "new" in their description
-        Offers ->  Clearance products have "discount" amount in their product description field
+        Offers ->  Clearance products have "discount" amount in their product
+        description field
         """
         if 'description' in request.GET:
             query_term = request.GET['description']

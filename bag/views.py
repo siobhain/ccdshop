@@ -23,12 +23,12 @@ def add_to_bag(request, item_id):
     redirect_url = request.POST.get('redirect_url')
     size = None
     engrave_text = ""
-    engrave_message = ""
+    engrave_msg = ""
     if 'product_size' in request.POST:
         size = request.POST['product_size']
     if 'engrave_text' in request.POST and 'engrave_checkbox' in request.POST:
-        engrave_text = request.POST['engrave_text'] 
-        engrave_message = (f' engraved with ({engrave_text}) ')
+        engrave_text = request.POST['engrave_text']
+        engrave_msg = (f' engraved with ({engrave_text}) ')
     size_only = size
     if size and engrave_text:
         size = size_only + "_" + engrave_text
@@ -39,25 +39,28 @@ def add_to_bag(request, item_id):
             if size in bag[item_id]['items_by_size'].keys():
                 # same size and same engraving already in bag
                 bag[item_id]['items_by_size'][size] += quantity
-                messages.success(request,
-                                (f'Updated quantity of {product.name} Size: {size_only.upper()}'
-                                f'{engrave_message} to {bag[item_id]["items_by_size"][size]}'
-                                ))
+                messages.success(
+                    request,
+                    (f'Update QTY of {product.name} Size: {size_only.upper()}'
+                     f'{engrave_msg} to {bag[item_id]["items_by_size"][size]}'
+                     )
+                    )
             else:
-                # add to bag : product already in bag but new size &/or engraving (new key)
-                bag[item_id]['items_by_size'][size] = quantity 
+                # add to bag : product already in bag but new size
+                # &/or engraving (new key)
+                bag[item_id]['items_by_size'][size] = quantity
                 messages.success(request,
                                  (f'Added {product.name}'
                                   f' Size : {size_only.upper()}'
-                                  f' to your bag {engrave_message}'))
+                                  f' to your bag {engrave_msg}'))
         else:
-            # Product not in bag until now 
+            # Product not in bag until now
             bag[item_id] = {'items_by_size': {size: quantity}}
             messages.success(request,
-                                (f'Added {product.name}'
-                                 f' Size : {size_only.upper()}'
-                                 f' to your bag {engrave_message}'))
-                          
+                             (f'Added {product.name}'
+                              f' Size : {size_only.upper()}'
+                              f' to your bag {engrave_msg}'))
+
     else:
         # Product without sizing or engraving
         if item_id in list(bag.keys()):
@@ -86,15 +89,16 @@ def adjust_bag(request, item_id):
             size_only = engrave_split[0]
         else:
             size_only = size
-                
+
     bag = request.session.get('bag', {})
 
     if size:
         if quantity > 0:
             bag[item_id]['items_by_size'][size] = quantity
             messages.success(
-                request, f'Changed quantity of {product.name} Size {size_only.upper()}\
-                    to {bag[item_id]["items_by_size"][size]}'
+                request, f'Changed quantity of {product.name} Size '
+                         f'{size_only.upper()} to '
+                         f'{bag[item_id]["items_by_size"][size]}'
                     )
         else:
             del bag[item_id]['items_by_size'][size]
@@ -131,9 +135,9 @@ def remove_from_bag(request, item_id):
             if not bag[item_id]['items_by_size']:
                 bag.pop(item_id)
             messages.success(
-                request, f'Removed {product.name} Size {size.split("_")[0].upper()} \
-                    from your bag'
-                    )
+                request, f'Removed {product.name} Size '
+                         f'{size.split("_")[0].upper()} from your bag'
+                        )
         else:
             bag.pop(item_id)
             messages.success(request, f'Removed {product.name} from your bag')

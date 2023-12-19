@@ -10,7 +10,6 @@ from profiles.models import UserProfile
 import json
 import time
 import stripe
-import math
 
 
 class StripeWH_Handler:
@@ -59,8 +58,6 @@ class StripeWH_Handler:
 
         billing_details = stripe_charge.billing_details
         shipping_details = intent.shipping
-        # grand_total = math.ceil(stripe_charge.amount / 100)
-        grand_total = round(stripe_charge.amount / 100)
 
         # Clean data in the shipping details for save to db Order
         for field, value in shipping_details.address.items():
@@ -96,8 +93,6 @@ class StripeWH_Handler:
                     street_address1__iexact=shipping_details.address.line1,
                     street_address2__iexact=shipping_details.address.line2,
                     county__iexact=shipping_details.address.state,
-                    # grand_total=grand_total, until cents bug on grand_total
-                    # fixed
                     original_bag=bag,
                     stripe_pid=pid,
                 )
@@ -128,7 +123,7 @@ class StripeWH_Handler:
                     county=shipping_details.address.state,
                     original_bag=bag,
                     stripe_pid=pid,
-                    CreatedByWebhook = True,
+                    CreatedByWebhook=True,
                 )
                 for item_id, item_data in json.loads(bag).items():
                     product = Product.objects.get(id=item_id)
@@ -140,18 +135,19 @@ class StripeWH_Handler:
                         )
                         order_line_item.save()
                     else:
-                        for details, quantity in item_data['items_by_size'].items(
-                        ):
-                            if "_" in details: # unwrap size & engravetext from compound key (details) separated by _
-                                size_only = details.split('_')[0]
-                                engrave_text = details.split('_')[1]
+                        for detail, qty in item_data['items_by_size'].items():
+                            if "_" in detail:
+                                # unwrap size & engravetext from compound
+                                # key (details) separated by
+                                size_only = detail.split('_')[0]
+                                engrave_text = detail.split('_')[1]
                             else:
-                                size_only = details
+                                size_only = detail
                                 engrave_text = ""
                             order_line_item = OrderLineItem(
                                 order=order,
                                 product=product,
-                                quantity=quantity,
+                                quantity=qty,
                                 product_size=size_only,
                                 engrave_text=engrave_text,
                             )

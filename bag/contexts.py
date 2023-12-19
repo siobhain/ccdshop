@@ -1,7 +1,6 @@
 from decimal import Decimal
 from django.conf import settings
 from django.shortcuts import get_object_or_404
-import math
 
 from products.models import Product
 
@@ -28,7 +27,8 @@ def bag_contents(request):
             for size, quantity in item_data['items_by_size'].items():
                 total += quantity * product.price
                 product_count += quantity
-                if "_" in size: # unwrap size & text from compound key separated by _
+                if "_" in size:
+                    # unwrap size & text from compound key separated by
                     size_only = size.split('_')[0]
                     engrave_text = size.split('_')[1]
                 else:
@@ -61,5 +61,4 @@ def bag_contents(request):
         'free_delivery_threshold': settings.FREE_DELIVERY_THRESHOLD,
         'grand_total': grand_total,
     }
-    
     return context
