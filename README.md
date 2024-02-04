@@ -1,6 +1,8 @@
-B2C![Am I responsive](docs/amires.JPG)
+![Am I responsive](docs/amires.JPG)
 
 # ![MLJ logo](static/favicon-32x32.png) Memory Lane Jewellery
+
+A Full Stack Ecomm Site for Handmade Jewellery with option to engrave personal message on specific items, Includes product filter/search, payment via stripe, authentication, email confirmations, real time notifications, static served by AWS bucket & the live app hosted on Heroku
 
 - You can view the live site [here](https://memorylane-jewellery-63c74e421293.herokuapp.com/)
 
@@ -56,7 +58,7 @@ B2C![Am I responsive](docs/amires.JPG)
 
 ## About 
 
-Memory Lane Jewellery is a fictional online jewellery store selling handmade jewellery.  All pieces are designed and carefully crafted by master goldsmith Julia Diamond. She has created a range of jewellery that can be of sentimental & nostalgic value to whomever wears it.  Each is designed to help create precious memories,  mark milestones & is made from highest quality precious metals to be enjoyed over a lifetime & cherish into the future 
+Memory Lane Jewellery is a fictional online jewellery store selling handmade jewellery.  All pieces are designed and carefully crafted by master goldsmith Julia Diamond. She has created a range of jewellery that can be of sentimental & nostalgic value to whomever wears it.  Each is designed to help create precious memories,  mark milestones & is made from highest quality precious metals to be enjoyed over a lifetime & cherish into the future.  When appropriate, there is option to personalise items by requesting an engraving of your own message to the jewellery item.
 
 ## Owners Stipulations 
 
@@ -120,7 +122,7 @@ The Basket icon when clicked goes to Shopping Bag page
 |![](docs/d-browse.JPG)|![](docs/d-forher.JPG)|![](docs/d-design.JPG)|![](docs/d-specials.JPG)|
 
 Update : 
-A `Contact Us` app` was subsequently added so apologies if some screenshots are out of sync & missing this menu item & indeed the 'Search' in this screenshot is centerstage whereas it was since moced more to the right so title wouls not wrap.
+A `Contact Us` app` was subsequently added so apologies if some screenshots are out of sync & missing this menu item & indeed the 'Search' in this screenshot is centerstage whereas it was since moced more to the right so title would not wrap.
 
 ![](docs/d-contactus.JPG)
 
